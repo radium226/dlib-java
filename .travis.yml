@@ -3,6 +3,7 @@ addons:
   apt:
     packages:
     - "cmake"
+    - "swig"
 
 cache:
   directories:
