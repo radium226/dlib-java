@@ -234,7 +234,6 @@ if (install_shared_library_output_folder)
 endif()
 
 if (install_java_source_output_folder)
-    message(pute)
     set(install_dir "${base_path}${install_java_source_output_folder}")
     install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib/java_src/${package_root_name}
         DESTINATION "${install_dir}"

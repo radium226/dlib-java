@@ -45,14 +45,12 @@
                         </goals>
                         <configuration>
                             <tasks>
-                                <mkdir dir="target/cmake"/>
-                                <exec executable="cmake" dir="target/cmake" failonerror="true">
+                                <mkdir dir="target/cpp"/>
+                                <exec executable="cmake" dir="target/cpp" failonerror="true">
                                     <arg value="../../src/main/cpp"/>
                                 </exec>
-                                <exec executable="cmake" dir="target/cmake" failonerror="true">
-                                    <arg value="--build"/>
-                                    <arg value="." />
-                                    <arg value="--target" />
+                                <exec executable="make" dir="target/cpp" failonerror="true" />
+                                <exec executable="make" dir="target/cpp" failonerror="true">
                                     <arg value="install" />
                                 </exec>
                             </tasks>

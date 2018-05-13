@@ -10,9 +10,6 @@ include_directories(.)
 # Additional dependencies
 #add_subdirectory(../../dlib dlib_build)
 
-message("toto")
-message($ENV{CI})
-
 if($ENV{CI})
     include_directories(
         "/tmp/dlib/usr/include"
