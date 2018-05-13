@@ -22,5 +22,5 @@ std::string Base64::encode(const std::string& input_text) {
   ostringstream output_text_stream;
   encoder.encode(input_text_stream, output_text_stream);
 
-  return output_text_streamg.str();
+  return output_text_stream.str();
 }

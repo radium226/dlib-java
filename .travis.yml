@@ -1,0 +1,14 @@
+language: java
+addons:
+  apt:
+    packages:
+    - "cmake"
+
+before_install:
+- ./dlib-java make-dlib
+
+script:
+- ./dlib-java mvn-package
+
+after_script:
+- ./dlib-java java-jar

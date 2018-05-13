@@ -1,8 +1,89 @@
 #!/bin/bash
 
+set -e
+
+export DLIB_VERSION="19.9"
+
+export SUCCEEDED=0
+export FAILED=1
+export IGNORED=2
+
 main()
 {
-  :
+    if [[ "${1}" = "make-dlib" ]]; then
+        install_dlib_library
+    fi
+
+    if [[ "${1}" = "mvn-package" ]]; then
+        package_dlib_java_project
+    fi
+
+    if [[ "${1}" = "java-jar" ]]; then
+        exec_dlib_java_project
+    fi
+}
+
+info()
+{
+    echo "${@}..."
+}
+
+
+download_dlib_archive()
+{
+    declare library_folder_path="${1}"
+    pushd "${library_folder_path}"
+    if [[ ! -f "./dlib.zip" ]]; then
+        wget "http://dlib.net/files/dlib-${DLIB_VERSION}.zip" -O "./dlib.zip"
+        unzip -o "./dlib.zip"
+    fi
+    popd
+}
+
+# http://dlib.net/compile.html
+# https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=dlib
+# https://www.learnopencv.com/install-dlib-on-ubuntu/
+install_dlib_library()
+{
+    declare library_folder_path="/tmp/dlib"
+
+    info "Creating library folder"
+    mkdir -p "${library_folder_path}/src"
+
+    info "Downloading sources"
+    download_dlib_archive "${library_folder_path}/src"
+
+    info "Configuring CMake"
+    pushd "${library_folder_path}/src/dlib-${DLIB_VERSION}/dlib"
+    mkdir -p "./build"
+    pushd "./build"
+    cmake \
+        -DCMAKE_INSTALL_PREFIX:PATH="${library_folder_path}/usr" \
+        -DCMAKE_INSTALL_LIBDIR:PATH="${library_folder_path}/usr/lib" \
+        -DCMAKE_BUILD_TYPE="Release" \
+        ".."
+    popd
+    popd
+
+    info "Compiling"
+    pushd "${library_folder_path}/src/dlib-${DLIB_VERSION}/dlib/build"
+    make
+    popd
+
+    info "Installing"
+    pushd "${library_folder_path}/src/dlib-${DLIB_VERSION}/dlib/build"
+    make install
+    popd
+}
+
+package_dlib_java_project()
+{
+    CI=1 mvn clean package
+}
+
+exec_dlib_java_project()
+{
+    LD_LIBRARY_PATH="/tmp/dlib/usr/lib" java -jar "target/dlib-1.0-SNAPSHOT.jar"
 }
 
 main "${@}"

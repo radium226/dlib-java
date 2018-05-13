@@ -9,7 +9,21 @@ include_directories(.)
 
 # Additional dependencies
 #add_subdirectory(../../dlib dlib_build)
+
+message("toto")
+message($ENV{CI})
+
+if($ENV{CI})
+    include_directories(
+        "/tmp/dlib/usr/include"
+    )
+    link_directories(
+        "/tmp/dlib/usr/lib"
+    )
+endif()
+
 set(additional_link_libraries dlib)
+
 
 # Tell swig to put the output files (the shared library and .jar) into the local folder.
 

@@ -10,8 +10,6 @@
 class Base64 {
 
 public:
-  Base64();
-
   static std::string encode(const std::string& input_text);
 };
 
