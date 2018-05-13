@@ -4,6 +4,10 @@ addons:
     packages:
     - "cmake"
 
+cache:
+  directories:
+  - "/tmp/dlib"
+
 before_install:
 - ./dlib-java make-dlib
 
