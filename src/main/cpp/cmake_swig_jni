@@ -42,7 +42,12 @@
 
 cmake_minimum_required (VERSION 2.8.12)
 
-include(/tmp/dlib/src/dlib-19.9/dlib/cmake_utils/use_cpp_11.cmake)
+if($ENV{CI})
+    include(/tmp/dlib/src/dlib-19.9/dlib/cmake_utils/use_cpp_11.cmake)
+else()
+    include(/usr/include/dlib/cmake_utils/use_cpp_11.cmake)
+endif()
+
 
 # This block of code tries to figure out what the JAVA_HOME environment
 # variable should be by looking at the folder that contains the java

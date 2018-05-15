@@ -5,15 +5,10 @@
 #include <cstdlib>
 //#include <dlib/compress_stream.h>
 #include <dlib/base64.h>
-#include "swig_api.h"
+#include "base64.hpp"
 
 using namespace std;
 using namespace dlib;
-
-#ifdef SWIG
-%include "std_string.i"
-%include "std_vector.i"
-#endif
 
 std::string Base64::encode(const std::string& input_text) {
   base64 encoder;

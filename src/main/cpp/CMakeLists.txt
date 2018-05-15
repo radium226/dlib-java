@@ -3,7 +3,7 @@ cmake_minimum_required (VERSION 2.8.12)
 project (dlib-java)
 
 set(java_package_name com.github.radium226.dlib)
-set(source_files base64.cpp)
+set(source_files base64.cpp rectangle_builder.cpp)
 
 include_directories(.)
 
