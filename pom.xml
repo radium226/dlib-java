@@ -35,25 +35,46 @@
             </plugin>-->
 
             <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>cmake</id>
-                        <phase>generate-sources</phase>
+                        <id>native-initialize</id>
+                        <phase>initialize</phase>
                         <goals>
-                            <goal>run</goal>
+                            <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <tasks>
-                                <mkdir dir="target/cpp"/>
-                                <exec executable="cmake" dir="target/cpp" failonerror="true">
-                                    <arg value="../../src/main/cpp"/>
-                                </exec>
-                                <exec executable="make" dir="target/cpp" failonerror="true" />
-                                <exec executable="make" dir="target/cpp" failonerror="true">
-                                    <arg value="install" />
-                                </exec>
-                            </tasks>
+                            <executable>src/main/native/make.sh</executable>
+                            <arguments>
+                                <argument>initialize</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>native-generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>src/main/native/make.sh</executable>
+                            <arguments>
+                                <argument>generate-sources</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>native-generate-resources</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>src/main/native/make.sh</executable>
+                            <arguments>
+                                <argument>generate-resources</argument>
+                            </arguments>
                         </configuration>
                     </execution>
                 </executions>
@@ -130,6 +151,18 @@
     </build>
 
     <dependencies>
+        <!--
+            mvn install:install-file \
+                -Dfile="/usr/share/opencv/java/opencv-341.jar" \
+                -DgroupId="opencv" \
+                -DartifactId="opencv" -Dversion="3.4.1" \
+                -Dpackaging="jar"
+        -->
+        <dependency>
+            <groupId>opencv</groupId>
+            <artifactId>opencv</artifactId>
+            <version>3.4.1</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
