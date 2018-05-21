@@ -1,18 +1,17 @@
 package com.github.radium226.dlib;
 
+import com.github.radium266.dlib.swig.Showcase;
 import org.opencv.core.*;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.opencv.highgui.HighGui;
 import org.opencv.imgproc.Imgproc;
-import radium226.swig.Showcase;
 
 public class Swig {
 
@@ -21,7 +20,8 @@ public class Swig {
     }
 
     public static void loadLibraries() {
-        System.load(Paths.get(System.getProperty("user.dir"), "src/main/resources/libshowcase_wrap.so").toString());
+        System.load("/usr/lib/libdlib.so");
+        System.load(Paths.get(System.getProperty("user.dir"), "target/generated-resources/swig/libshowcase_wrap.so").toString());
         System.load(Paths.get("/usr/share/opencv/java/libopencv_java341.so").toString());
     }
 
@@ -33,8 +33,8 @@ public class Swig {
 
         drawCircleUsingOpenCVInJava(             150, 50, 25, 0,   0,   255, mat);
 
-        //displayImageUsingOpenCVInJava(mat);
-        //Showcase.displayImageUsingOpenCVInCpp(mat);
+        displayImageUsingOpenCVInJava(mat);
+        Showcase.displayImageUsingOpenCVInCpp(mat);
         Showcase.displayImageUsingDLibInCpp(mat);
     }
 

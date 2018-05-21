@@ -57,7 +57,7 @@ public class DLib {
     }
 
     public static void main( String[] args ) {
-        System.out.println(Base64.encode("coucou"));
+        //System.out.println(Base64.encode("coucou"));
     }
 
 }
