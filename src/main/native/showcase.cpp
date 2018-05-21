@@ -13,6 +13,8 @@
 #include <dlib/gui_widgets.h>
 #include <dlib/image_io.h>
 
+#include <vector>
+
 using namespace std;
 
 void Showcase::displayImageUsingOpenCVInCpp(cv::Mat mat) {
@@ -54,4 +56,21 @@ void Showcase::drawCircleImageUsingDLibInCpp(int x, int y, int radius, int red, 
     dlib::dpoint center(x, y);
     dlib::bgr_pixel color(red, green, blue);
     dlib::draw_solid_circle(image, center, radius, color);
+}
+
+cv::Point Showcase::returnPoint(double x, double y) {
+    return cv::Point(x, y);
+}
+
+cv::Rect Showcase::returnRect(cv::Point topLeft, cv::Point bottomRight) {
+    return cv::Rect(topLeft, bottomRight);
+}
+
+std::vector<cv::Rect> Showcase::returnRects() {
+    std::vector<cv::Rect> rects;
+    cv::Rect rect0(5, 0, 0, 0);
+    cv::Rect rect1(1, 1, 1, 1);
+    rects.push_back(rect0);
+    rects.push_back(rect1);
+    return rects;
 }

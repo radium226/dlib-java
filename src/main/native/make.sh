@@ -35,6 +35,7 @@ initialize()
 
 generate_sources()
 {
+    # -debug-typemap
     log "Generating Java sources using SWIG"
     swig \
         -c++ \
@@ -51,6 +52,7 @@ generate_resources()
     log "Compiling C++ sources into object files"
     g++ \
         -fPIC \
+        -fno-strict-aliasing \
         -I"/usr/lib/jvm/java-8-openjdk/include" \
         -I"/usr/lib/jvm/java-8-openjdk/include/linux" \
         $( pkg-config --cflags "dlib-1" ) \
@@ -60,6 +62,7 @@ generate_resources()
 
     g++ \
         -fPIC \
+        -fno-strict-aliasing \
         -I"/usr/lib/jvm/java-8-openjdk/include" \
         -I"/usr/lib/jvm/java-8-openjdk/include/linux" \
         $( pkg-config --cflags "dlib-1" ) \
