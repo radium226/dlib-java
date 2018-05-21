@@ -16,4 +16,14 @@ public class RectangleBuilderTest {
         assertEquals(expectedRectangle, rectangle);
     }
 
+    @Test
+    public void ensureBuildRectanglesReturnsAnArray() {
+        DLib.loadLibrary();
+
+        RectangleVector rectangleVector = RectangleBuilder.buildRectangles(0, 0, 0, 0, 0);
+        rectangleVector.add("toto");
+        System.out.println(rectangleVector.get(0));
+
+    }
+
 }
