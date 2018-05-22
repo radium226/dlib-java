@@ -12,19 +12,50 @@ export GENERATED_JAVA_SOURCES_FOLDER="target/generated-sources/swig"
 export GENERATED_JAVA_RESOURCES_FOLDER="target/generated-resources/swig"
 
 export RED='\033[0;31m'
+export BLUE='\033[34m'
 export DEFAULT='\033[0m' # No Color
+
+export SWIG_MODULES=(
+    "showcase"
+    "dlib"
+)
+
+export GCC_COMPILE_SPECS=(
+    "${SOURCE_FOLDER}/showcase.cpp","${TARGET_FOLDER}/build/showcase.o"
+    "${SOURCE_FOLDER}/shape_predictor.cpp","${TARGET_FOLDER}/build/shape_predictor.o"
+    "${TARGET_FOLDER}/showcase_wrap.cpp","${TARGET_FOLDER}/build/showcase_wrap.o"
+    "${TARGET_FOLDER}/dlib_wrap.cpp","${TARGET_FOLDER}/build/dlib_wrap.o"
+)
+
+spec::target_file_paths()
+{
+    declare old_ifs=
+    declare i=
+    declare target_file_path=
+
+    old_ifs="${IFS}"
+    IFS=','; for i in  "${@}"; do set -- $i;
+        target_file_path="${2}"
+        echo "${target_file_path}"
+    done
+    IFS="${old_ifs}"
+}
 
 log()
 {
-    echo -e "${RED} ==> ${1}${DEFAULT}"
+    declare indent=${2:-0}
+    case ${indent} in
+        0) echo -e "${RED} ==> ${1}${DEFAULT}" ;;
+        1) echo -e "${BLUE}      - ${1}${DEFAULT}" ;;
+    esac
 }
 
-clean()
+mvn::clean()
 {
     pwd
 }
 
-initialize()
+mvn::initialize()
 {
     log "Creating directories"
     mkdir -p "${TARGET_FOLDER}/build"
@@ -32,24 +63,36 @@ initialize()
     mkdir -p "${GENERATED_JAVA_RESOURCES_FOLDER}"
 }
 
-
-generate_sources()
+swig::generate_java_sources()
 {
-    # -debug-typemap
-    log "Generating Java sources using SWIG"
+    declare module="${1}" ; shift
     swig \
+        -I"${SOURCE_FOLDER}/swig" \
+        -I"${SOURCE_FOLDER}/include" \
+        -I- \
         -c++ \
         -java -package "${JAVA_PACKAGE}" \
-        -o "${TARGET_FOLDER}/showcase_wrap.cpp" \
+        -o "${TARGET_FOLDER}/${module}_wrap.cpp" \
         -outdir "${GENERATED_JAVA_SOURCES_FOLDER}/$( echo "${JAVA_PACKAGE}" | tr "." "/" )" \
-        "${SOURCE_FOLDER}/showcase.i"
+        "${SOURCE_FOLDER}/swig/${module}.i"
 }
 
-generate_resources()
+mvn::generate_sources()
 {
-    declare name=
+    # -debug-typemap
+    log "Generating Java sources using SWIG" 0
+    declare swig_module=
+    for swig_module in "${SWIG_MODULES[@]}"; do
+        log "${swig_module}" 1
+        swig::generate_java_sources "${swig_module}"
+    done
+}
 
-    log "Compiling C++ sources into object files"
+gcc::compile_object()
+{
+    declare source_file_path="${1}"
+    declare target_file_path="${2}"
+
     g++ \
         -fPIC \
         -fno-strict-aliasing \
@@ -58,41 +101,57 @@ generate_resources()
         $( pkg-config --cflags "dlib-1" ) \
         $( pkg-config --cflags "opencv" ) \
         -I"${SOURCE_FOLDER}" \
-        -c "${SOURCE_FOLDER}/showcase.cpp" -o "${TARGET_FOLDER}/build/showcase.o"
+        -I"${SOURCE_FOLDER}/include" \
+        -c "${source_file_path}" -o "${target_file_path}"
+}
 
-    g++ \
-        -fPIC \
-        -fno-strict-aliasing \
-        -I"/usr/lib/jvm/java-8-openjdk/include" \
-        -I"/usr/lib/jvm/java-8-openjdk/include/linux" \
-        $( pkg-config --cflags "dlib-1" ) \
-        $( pkg-config --cflags "opencv" ) \
-        -I"${SOURCE_FOLDER}" \
-        -c "${TARGET_FOLDER}/showcase_wrap.cpp" -o "${TARGET_FOLDER}/build/showcase_wrap.o"
-
-    log "Linking object files to shared library"
+gcc::compile_shared_library()
+{
+    declare so_file_path="${1}" ; shift
     g++ \
         -fPIC \
         -shared \
         $( pkg-config --libs "opencv" ) \
         $( pkg-config --libs "dlib-1" ) \
-        "${TARGET_FOLDER}/build/showcase.o" "${TARGET_FOLDER}/build/showcase_wrap.o" \
-        -o "${GENERATED_JAVA_RESOURCES_FOLDER}/libshowcase_wrap.so"
+        "${@}" \
+        -o "${so_file_path}"
+}
+
+mvn::generate_resources()
+{
+    declare source_file_path=
+    declare target_file_path=
+    declare old_ifs=
+
+    log "Compiling source files to objects" 0
+    old_ifs="${IFS}"
+    IFS=','; for i in  "${GCC_COMPILE_SPECS[@]}"; do set -- $i;
+        source_file_path="${1}"
+        target_file_path="${2}"
+        log "${source_file_path} to ${target_file_path}" 1
+        gcc::compile_object "${source_file_path}" "${target_file_path}"
+    done
+    IFS="${old_ifs}"
+
+    log "Linking object files to shared library"
+    gcc::compile_shared_library \
+        "${GENERATED_JAVA_RESOURCES_FOLDER}/libdlib-java.so" \
+        $( spec::target_file_paths "${GCC_COMPILE_SPECS[@]}" )
 }
 
 main() {
     declare phase="${1}" ; shift
     case "${phase}" in
         "initialize")
-                initialize
+                mvn::initialize
             ;;
 
         "generate-sources")
-                generate_sources
+                mvn::generate_sources
             ;;
 
         "generate-resources")
-                generate_resources
+                mvn::generate_resources
             ;;
     esac
 

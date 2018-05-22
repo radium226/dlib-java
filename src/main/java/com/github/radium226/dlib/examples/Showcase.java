@@ -1,6 +1,5 @@
-package com.github.radium226.dlib;
+package com.github.radium226.dlib.examples;
 
-import com.github.radium266.dlib.swig.Showcase;
 import org.opencv.core.*;
 
 import javax.imageio.ImageIO;
@@ -9,34 +8,23 @@ import java.awt.image.DataBufferByte;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 import org.opencv.highgui.HighGui;
 import org.opencv.imgproc.Imgproc;
 
-public class Swig {
-
-    static {
-        loadLibraries();
-    }
-
-    public static void loadLibraries() {
-        System.load("/usr/lib/libdlib.so");
-        System.load(Paths.get(System.getProperty("user.dir"), "target/generated-resources/swig/libshowcase_wrap.so").toString());
-        System.load(Paths.get("/usr/share/opencv/java/libopencv_java341.so").toString());
-    }
+public class Showcase {
 
     public static void main(String[] argument) throws Throwable {
         Mat mat = openMatUsingImageIO(Paths.get("src/main/resources/lena.jpg"));
 
-        Showcase.drawCircleImageUsingOpenCVInCpp(50,  50, 25, 255, 0,   0,   mat);
-        Showcase.drawCircleImageUsingDLibInCpp(  100, 50, 25, 0,   255, 0,   mat);
+        com.github.radium266.dlib.swig.Showcase.drawCircleImageUsingOpenCVInCpp(50,  50, 25, 255, 0,   0,   mat);
+        com.github.radium266.dlib.swig.Showcase.drawCircleImageUsingDLibInCpp(  100, 50, 25, 0,   255, 0,   mat);
 
         drawCircleUsingOpenCVInJava(             150, 50, 25, 0,   0,   255, mat);
 
         displayImageUsingOpenCVInJava(mat);
-        Showcase.displayImageUsingOpenCVInCpp(mat);
-        Showcase.displayImageUsingDLibInCpp(mat);
+        com.github.radium266.dlib.swig.Showcase.displayImageUsingOpenCVInCpp(mat);
+        com.github.radium266.dlib.swig.Showcase.displayImageUsingDLibInCpp(mat);
     }
 
     public static void drawCircleUsingOpenCVInJava(int x, int y, int radius, int red, int green, int blue, Mat mat) {
