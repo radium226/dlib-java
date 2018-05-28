@@ -23,6 +23,7 @@ export SWIG_MODULES=(
 export GCC_COMPILE_SPECS=(
     "${SOURCE_FOLDER}/showcase.cpp","${TARGET_FOLDER}/build/showcase.o"
     "${SOURCE_FOLDER}/shape_predictor.cpp","${TARGET_FOLDER}/build/shape_predictor.o"
+    "${SOURCE_FOLDER}/face_detector.cpp","${TARGET_FOLDER}/build/face_detector.o"
     "${TARGET_FOLDER}/showcase_wrap.cpp","${TARGET_FOLDER}/build/showcase_wrap.o"
     "${TARGET_FOLDER}/dlib_wrap.cpp","${TARGET_FOLDER}/build/dlib_wrap.o"
 )

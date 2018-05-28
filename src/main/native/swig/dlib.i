@@ -12,3 +12,4 @@ import java.util.Arrays;
 %}
 
 %include dlib/shape_predictor.i
+%include dlib/face_detector.i
