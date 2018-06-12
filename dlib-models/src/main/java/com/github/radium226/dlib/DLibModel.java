@@ -1,9 +1,7 @@
 package com.github.radium226.dlib;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.Objects;
 
 final public class DLibModel {
@@ -21,8 +19,16 @@ final public class DLibModel {
     }
 
     public Path extract() throws IOException {
-        Path extractedFilePath = tempFolderPath().resolve(getClass().getSimpleName()).resolve(resourceName);
-        Files.copy(getClass().getResourceAsStream(resourceName), extractedFilePath);
+        Path tempFolderPath = tempFolderPath().resolve(getClass().getSimpleName());
+        if (!Files.exists(tempFolderPath)) {
+            Files.createDirectories(tempFolderPath);
+        }
+
+        Path extractedFilePath = tempFolderPath.resolve(resourceName);
+        if (!Files.exists(extractedFilePath)) {
+            Files.copy(getClass().getClassLoader().getResourceAsStream(resourceName), extractedFilePath);
+        }
+
         return extractedFilePath;
     }
 

@@ -5,7 +5,7 @@ WGET=wget
 
 MODELS+=shape_predictor_68_face_landmarks.dat
 MODELS+=shape_predictor_5_face_landmarks.dat
-MODELS+=dlib_face_recognition_resnet_model_v1.dat.bz2
+MODELS+=dlib_face_recognition_resnet_model_v1.dat
 
 %.dat.bz2:
 	$(WGET) --quiet "http://dlib.net/files/$@" -O "./$@"
