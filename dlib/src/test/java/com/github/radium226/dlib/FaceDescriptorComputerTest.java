@@ -3,6 +3,7 @@ package com.github.radium226.dlib;
 import com.github.radium226.opencv.OpenCV;
 import com.github.radium266.dlib.swig.FaceDescriptorComputer;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.opencv.core.*;
 import org.opencv.highgui.HighGui;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+@Ignore
 public class FaceDescriptorComputerTest {
 
     private static FaceDescriptorComputer FACE_DESCRIPTOR_COMPUTER = null;

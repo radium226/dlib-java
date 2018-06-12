@@ -4,6 +4,7 @@ import com.github.radium226.dlib.examples.Showcase;
 import com.github.radium266.dlib.swig.ShapePredictor;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
 
+@Ignore
 public class ShapePredictorTest {
 
     @BeforeClass
