@@ -21,6 +21,7 @@ export SWIG_MODULES=(
 )
 
 export GCC_COMPILE_SPECS=(
+    "${SOURCE_FOLDER}/face_descriptor_computer.cpp","${TARGET_FOLDER}/build/face_descriptor_computer.o"
     "${SOURCE_FOLDER}/showcase.cpp","${TARGET_FOLDER}/build/showcase.o"
     "${SOURCE_FOLDER}/shape_predictor.cpp","${TARGET_FOLDER}/build/shape_predictor.o"
     "${SOURCE_FOLDER}/face_detector.cpp","${TARGET_FOLDER}/build/face_detector.o"
@@ -68,6 +69,7 @@ swig::generate_java_sources()
 {
     declare module="${1}" ; shift
     swig \
+        -v \
         -I"${SOURCE_FOLDER}/swig" \
         -I"${SOURCE_FOLDER}/include" \
         -I- \

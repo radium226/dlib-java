@@ -92,3 +92,5 @@ buildNumber.properties
 .idea/
 *.iml
 
+*.dat
+
