@@ -45,18 +45,10 @@ dlib::download_archive()
     popd
 }
 
-opencv::install_library()
+opencv::configure()
 {
-  info "Creating  folders"
-  declare folder_path="/tmp/opencv"
-  mkdir -p "${folder_path}"
+  declare folder_path="${1}"
 
-  info "Downloading archives"
-  declare source_folder_path="${folder_path}/src"
-  mkdir -p "${source_folder_path}"
-  opencv::download_archives "${source_folder_path}"
-
-  info "Configuring CMake"
   declare cmake_options=(
     "-D WITH_OPENCL=ON"
     "-D WITH_OPENGL=ON"
@@ -74,7 +66,7 @@ opencv::install_library()
     "-D CPU_BASELINE_DISABLE=SSE3"
     "-D CPU_BASELINE_REQUIRE=SSE2"
   )
-  pushd "${source_folder_path}/opencv-${OPENCV_VERSION}"
+  pushd "${folder_path}/src/opencv-${OPENCV_VERSION}"
   mkdir -p "./build"
   pushd "./build"
   cmake \
@@ -88,18 +80,46 @@ opencv::install_library()
     ".."
   popd
   popd
+}
 
-  info "Compiling"
-  pushd "${source_folder_path}/opencv-${OPENCV_VERSION}/build"
+opencv::compile()
+{
+  declare folder_path="${1}"
+
+  pushd "${folder_path}/src/opencv-${OPENCV_VERSION}/build"
   make
   popd
+}
+
+opencv::install_library()
+{
+  declare folder_path="/tmp/opencv"
+
+  mkdir -p "${folder_path}"
+  mkdir "${folder_path}/src"
+  mkdir "${folder_path}/usr"
+  mkdir "${folder_path}/usr/lib"
+
+  info "Downloading"
+  opencv::download_archives "${folder_path}"
+
+  info "Configuring"
+  opencv::configure "${folder_path}"
+
+  info "Compiling"
+  opencv::compile "${folder_path}"
+
+  info "Checking"
+  ls -alrt "${folder_path}/usr"
+  ls -alrt "${folder_path}/usr/lib"
 
 }
 
 opencv::download_archives()
 {
   declare folder_path="${1}"
-  pushd "${folder_path}"
+
+  pushd "${folder_path}/src"
   if [[ ! -f "./opencv.zip" ]]; then
       wget "https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.tar.gz" \
         -O "./opencv.tar.gz"
@@ -107,7 +127,7 @@ opencv::download_archives()
   fi
   popd
 
-  pushd "${folder_path}"
+  pushd "${folder_path}/src"
   if [[ ! -f "./opencv_contrib.zip" ]]; then
       wget "https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.tar.gz" \
         -O "./opencv_contrib.tar.gz"

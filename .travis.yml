@@ -20,6 +20,8 @@ addons:
     - "libtiff-dev"
     - "libjasper-dev"
     - "libdc1394-22-dev"
+    - "libblas-dev"
+    - "liblapack-dev"
 
 cache:
   directories:
