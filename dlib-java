@@ -70,8 +70,6 @@ opencv::install_library()
     "-D INSTALL_C_EXAMPLES=ON"
     "-D INSTALL_PYTHON_EXAMPLES=ON"
     "-D CMAKE_BUILD_TYPE=Release"
-    "-D CMAKE_INSTALL_PREFIX=/usr"
-    "-D CMAKE_INSTALL_LIBDIR=lib"
     "-D CMAKE_SKIP_RPATH=ON"
     "-D CPU_BASELINE_DISABLE=SSE3"
     "-D CPU_BASELINE_REQUIRE=SSE2"
@@ -85,6 +83,8 @@ opencv::install_library()
     -DLAPACK_LIBRARIES="/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so" \
     -DLAPACK_CBLAS_H="/usr/include/cblas.h" \
     -DLAPACK_LAPACKE_H="/usr/include/lapacke.h" \
+    -DCMAKE_INSTALL_PREFIX="${folder_path}/usr" \
+    -DCMAKE_INSTALL_LIBDIR="${folder_path}/usr/lib" \
     ".."
   popd
   popd
@@ -103,7 +103,7 @@ opencv::download_archives()
   if [[ ! -f "./opencv.zip" ]]; then
       wget "https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.tar.gz" \
         -O "./opencv.tar.gz"
-      tar xf "./opencv.zip"
+      tar xf "./opencv.tar.gz"
   fi
   popd
 
