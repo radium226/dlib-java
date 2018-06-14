@@ -22,6 +22,8 @@ addons:
     - "libdc1394-22-dev"
     - "libblas-dev"
     - "liblapack-dev"
+    - "libgflags-dev"
+    - "libatlas-base-dev"
 
 cache:
   directories:
