@@ -98,6 +98,14 @@ opencv::install()
   pushd "${folder_path}/src/opencv-${OPENCV_VERSION}/build"
   make install
   popd
+
+  pushd "${folder_path}/usr/share/OpenCV/java"
+  mvn install:install-file \
+    -Dfile="./opencv-$(echo ${OPENCV_VERSION} | sed 's/\.//g').jar" \
+    -DgroupId="opencv" \
+    -DartifactId="opencv" -Dversion="${OPENCV_VERSION}" \
+    -Dpackaging="jar"
+  popd
 }
 
 opencv::install_library()
@@ -119,7 +127,7 @@ opencv::install_library()
   opencv::compile "${folder_path}"
 
   info "Installing"
-  opencv::installing "${folder_path}"
+  opencv::install "${folder_path}"
 
   info "Checking"
   ls -alrt "${folder_path}/usr"
@@ -193,7 +201,7 @@ dlib_java::package_project()
 
 dlib_java::exec_jar()
 {
-    LD_LIBRARY_PATH="/tmp/dlib/usr/lib" java -jar "target/dlib-1.0-SNAPSHOT.jar"
+    LD_LIBRARY_PATH="/tmp/dlib/usr/lib;/tmp/opencv/usr/lib;/tmp/opencv/usr/share/OpenCV/java" java -jar "target/dlib-1.0-SNAPSHOT.jar"
 }
 
 main "${@}"
