@@ -3,6 +3,7 @@
 set -e
 
 export DLIB_VERSION="19.9"
+export OPENCV_VERSION="3.4.1"
 
 export SUCCEEDED=0
 export FAILED=1
@@ -11,15 +12,19 @@ export IGNORED=2
 main()
 {
     if [[ "${1}" = "make-dlib" ]]; then
-        install_dlib_library
+        opencv::install_library
+    fi
+
+    if [[ "${1}" = "make-dlib" ]]; then
+        dlib::install_library
     fi
 
     if [[ "${1}" = "mvn-package" ]]; then
-        package_dlib_java_project
+        dlib_java::package_project
     fi
 
     if [[ "${1}" = "java-jar" ]]; then
-        exec_dlib_java_project
+        dlib_java::exec_jar
     fi
 }
 
@@ -29,7 +34,7 @@ info()
 }
 
 
-download_dlib_archive()
+dlib::download_archive()
 {
     declare library_folder_path="${1}"
     pushd "${library_folder_path}"
@@ -40,10 +45,81 @@ download_dlib_archive()
     popd
 }
 
+opencv::install_library()
+{
+  info "Creating  folders"
+  declare folder_path="/tmp/opencv"
+  mkdir -p "${folder_path}"
+
+  info "Downloading archives"
+  declare source_folder_path="${folder_path}/src"
+  mkdir -p "${source_folder_path}"
+  opencv::download_archive "${source_folder_path}"
+
+  info "Configuring CMake"
+  declare cmake_options=(
+    "-D WITH_OPENCL=ON"
+    "-D WITH_OPENGL=ON"
+    "-D WITH_TBB=ON"
+    "-D WITH_XINE=ON"
+    "-D WITH_GSTREAMER=OFF"
+    "-D BUILD_WITH_DEBUG_INFO=OFF"
+    "-D BUILD_TESTS=OFF"
+    "-D BUILD_PERF_TESTS=OFF"
+    "-D BUILD_EXAMPLES=ON"
+    "-D INSTALL_C_EXAMPLES=ON"
+    "-D INSTALL_PYTHON_EXAMPLES=ON"
+    "-D CMAKE_BUILD_TYPE=Release"
+    "-D CMAKE_INSTALL_PREFIX=/usr"
+    "-D CMAKE_INSTALL_LIBDIR=lib"
+    "-D CMAKE_SKIP_RPATH=ON"
+    "-D CPU_BASELINE_DISABLE=SSE3"
+    "-D CPU_BASELINE_REQUIRE=SSE2"
+  )
+  pushd "${source_folder_path}/opencv-${OPENCV_VERSION}"
+  mkdir -p "./build"
+  pushd "./build"
+  cmake \
+    ${cmake_options[@]} \
+    -DOPENCV_EXTRA_MODULES_PATH="../..//opencv_contrib-${OPENCV_VERSION}/modules" \
+    -DLAPACK_LIBRARIES="/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so" \
+    -DLAPACK_CBLAS_H="/usr/include/cblas.h" \
+    -DLAPACK_LAPACKE_H="/usr/include/lapacke.h" \
+    ".."
+  popd
+  popd
+
+  info "Compiling"
+  pushd "${source_folder_path}/src/opencv-${OPENCV_VERSION}/build"
+  make
+  popd
+
+}
+
+opencv::download_archives()
+{
+  declare folder_path="${1}"
+  pushd "${folder_path}"
+  if [[ ! -f "./opencv.zip" ]]; then
+      wget "https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.tar.gz" \
+        -O "./opencv.tar.gz"
+      tar xf "./opencv.zip"
+  fi
+  popd
+
+  pushd "${folder_path}"
+  if [[ ! -f "./opencv_contrib.zip" ]]; then
+      wget "https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.tar.gz" \
+        -O "./opencv_contrib.tar.gz"
+      tar xf "./opencv_contrib.tar.gz"
+  fi
+  popd
+}
+
 # http://dlib.net/compile.html
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=dlib
 # https://www.learnopencv.com/install-dlib-on-ubuntu/
-install_dlib_library()
+dlib::install_library()
 {
     declare library_folder_path="/tmp/dlib"
 
@@ -51,7 +127,7 @@ install_dlib_library()
     mkdir -p "${library_folder_path}/src"
 
     info "Downloading sources"
-    download_dlib_archive "${library_folder_path}/src"
+    dlib::download_archive "${library_folder_path}/src"
 
     info "Configuring CMake"
     pushd "${library_folder_path}/src/dlib-${DLIB_VERSION}/dlib"
@@ -76,12 +152,14 @@ install_dlib_library()
     popd
 }
 
-package_dlib_java_project()
+
+
+dlib_java::package_project()
 {
     CI=1 mvn clean package
 }
 
-exec_dlib_java_project()
+dlib_java::exec_jar()
 {
     LD_LIBRARY_PATH="/tmp/dlib/usr/lib" java -jar "target/dlib-1.0-SNAPSHOT.jar"
 }

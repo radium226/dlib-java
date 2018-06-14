@@ -4,12 +4,30 @@ addons:
     packages:
     - "cmake"
     - "swig"
+    - "build-essentials"
+    - "git"
+    - "libgtk2.0-dev"
+    - "pkg-config"
+    - "libavcodec-dev"
+    - "libavformat-dev"
+    - "libswscale-dev"
+    - "python-dev"
+    - "python-numpy"
+    - "libtbb2"
+    - "libtbb-dev"
+    - "libjpeg-dev"
+    - "libpng-dev"
+    - "libtiff-dev"
+    - "libjasper-dev"
+    - "libdc1394-22-dev"
 
 cache:
   directories:
   - "/tmp/dlib"
+  - "/tmp/opencv"
 
 before_install:
+- ./dlib-java make-opencv
 - ./dlib-java make-dlib
 
 script:
