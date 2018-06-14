@@ -91,6 +91,15 @@ opencv::compile()
   popd
 }
 
+opencv::install()
+{
+  declare folder_path="${1}"
+
+  pushd "${folder_path}/src/opencv-${OPENCV_VERSION}/build"
+  make install
+  popd
+}
+
 opencv::install_library()
 {
   declare folder_path="/tmp/opencv"
@@ -108,6 +117,9 @@ opencv::install_library()
 
   info "Compiling"
   opencv::compile "${folder_path}"
+
+  info "Installing"
+  opencv::installing "${folder_path}"
 
   info "Checking"
   ls -alrt "${folder_path}/usr"
