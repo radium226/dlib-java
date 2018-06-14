@@ -90,7 +90,7 @@ opencv::install_library()
   popd
 
   info "Compiling"
-  pushd "${source_folder_path}/src/opencv-${OPENCV_VERSION}/build"
+  pushd "${source_folder_path}/opencv-${OPENCV_VERSION}/build"
   make
   popd
 
