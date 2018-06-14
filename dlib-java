@@ -54,7 +54,7 @@ opencv::install_library()
   info "Downloading archives"
   declare source_folder_path="${folder_path}/src"
   mkdir -p "${source_folder_path}"
-  opencv::download_archive "${source_folder_path}"
+  opencv::download_archives "${source_folder_path}"
 
   info "Configuring CMake"
   declare cmake_options=(
