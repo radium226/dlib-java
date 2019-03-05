@@ -13,8 +13,8 @@
 // We do not want to generate anything about the NN
 #ifndef SWIG
 
-using namespace dlib;
-using namespace std;
+using namespace std; // TODO: We need to remove that
+using namespace dlib; // TODO: We need to remove that
 
 // https://github.com/davisking/dlib/blob/master/tools/python/src/face_recognition.cpp
 // http://dlib.net/dnn_face_recognition_ex.cpp.html

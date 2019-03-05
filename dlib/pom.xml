@@ -132,7 +132,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.github.radium226.dlib.DLib</mainClass>
+                                    <mainClass>com.github.radium226.dlib.examples.Showcase</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

@@ -7,6 +7,6 @@ import java.util.Arrays;
 public class OpenCV {
 
     public static void loadLibraries() {
-        Libraries.loadLibrary("opencv_java341");
+        Libraries.loadLibrary("opencv_java401");
     }
 }

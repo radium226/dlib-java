@@ -12,10 +12,14 @@ import java.nio.file.Paths;
 import org.opencv.highgui.HighGui;
 import org.opencv.imgproc.Imgproc;
 
+import com.github.radium226.dlib.DLib;
+
 public class Showcase {
 
-    public static void main(String[] argument) throws Throwable {
-        Mat mat = openMatUsingImageIO(Paths.get("src/main/resources/lena.jpg"));
+    public static void main(String[] arguments) throws Throwable {
+        DLib.loadLibraries();
+        System.out.println(arguments[0]);
+        Mat mat = openMatUsingImageIO(Paths.get(arguments[0]));
 
         com.github.radium266.dlib.swig.Showcase.drawCircleImageUsingOpenCVInCpp(50,  50, 25, 255, 0,   0,   mat);
         com.github.radium266.dlib.swig.Showcase.drawCircleImageUsingDLibInCpp(  100, 50, 25, 0,   255, 0,   mat);
@@ -31,7 +35,7 @@ public class Showcase {
         Point center = new Point(x, y);
         Scalar color = new Scalar(red, green, blue);
 
-        Imgproc.circle(mat, center, radius, color);
+        Imgproc.circle(mat, center, radius, color, 1);
     }
 
     public static void displayImageUsingOpenCVInJava(Mat mat) {

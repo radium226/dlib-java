@@ -1,5 +1,3 @@
-#include "face_descriptor_computer.hpp"
-
 #include <dlib/dnn.h>
 #include <dlib/gui_widgets.h>
 #include <dlib/clustering.h>
@@ -9,6 +7,8 @@
 #include <dlib/opencv.h>
 
 #include <iostream>
+
+#include "face_descriptor_computer.hpp" // TODO: We need to move that on top, but before we need to add the proper dlib:: and std:: in it
 
 FaceDescriptorComputer::FaceDescriptorComputer(std::string faceShapePredictorModelFilePath, std::string faceNetworkModelFilePath) {
     dlib::deserialize(faceShapePredictorModelFilePath) >> this->face_shape_predictor;

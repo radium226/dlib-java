@@ -1,9 +1,9 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
-export DLIB_VERSION="19.9"
-export OPENCV_VERSION="3.4.1"
+export DLIB_VERSION="19.16"
+export OPENCV_VERSION="4.0.1"
 
 export SUCCEEDED=0
 export FAILED=1
@@ -11,7 +11,7 @@ export IGNORED=2
 
 main()
 {
-    if [[ "${1}" = "make-dlib" ]]; then
+    if [[ "${1}" = "make-opencv" ]]; then
         opencv::install_library
     fi
 
@@ -65,13 +65,14 @@ opencv::configure()
     "-D CMAKE_SKIP_RPATH=ON"
     "-D CPU_BASELINE_DISABLE=SSE3"
     "-D CPU_BASELINE_REQUIRE=SSE2"
+    "-D OPENCV_GENERATE_PKGCONFIG=ON"
   )
   pushd "${folder_path}/src/opencv-${OPENCV_VERSION}"
   mkdir -p "./build"
   pushd "./build"
   cmake \
     ${cmake_options[@]} \
-    -DOPENCV_EXTRA_MODULES_PATH="../..//opencv_contrib-${OPENCV_VERSION}/modules" \
+    -DOPENCV_EXTRA_MODULES_PATH="../../opencv_contrib-${OPENCV_VERSION}/modules" \
     -DLAPACK_LIBRARIES="/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so" \
     -DLAPACK_CBLAS_H="/usr/include/cblas.h" \
     -DLAPACK_LAPACKE_H="/usr/include/lapacke.h" \
@@ -99,7 +100,7 @@ opencv::install()
   make install
   popd
 
-  pushd "${folder_path}/usr/share/OpenCV/java"
+  pushd "${folder_path}/usr/share/java/opencv4"
   mvn install:install-file \
     -Dfile="./opencv-$(echo ${OPENCV_VERSION} | sed 's/\.//g').jar" \
     -DgroupId="opencv" \
@@ -113,9 +114,9 @@ opencv::install_library()
   declare folder_path="/tmp/opencv"
 
   mkdir -p "${folder_path}"
-  mkdir "${folder_path}/src"
-  mkdir "${folder_path}/usr"
-  mkdir "${folder_path}/usr/lib"
+  mkdir "${folder_path}/src" || true
+  mkdir "${folder_path}/usr" || true
+  mkdir "${folder_path}/usr/lib" || true
 
   info "Downloading"
   opencv::download_archives "${folder_path}"
@@ -176,6 +177,10 @@ dlib::install_library()
     cmake \
         -DCMAKE_INSTALL_PREFIX:PATH="${library_folder_path}/usr" \
         -DCMAKE_INSTALL_LIBDIR:PATH="${library_folder_path}/usr/lib" \
+        -DBUILD_SHARED_LIBS:BOOL=ON \
+        -DUSE_AVX_INSTRUCTIONS:BOOL=ON \
+        -DUSE_SSE2_INSTRUCTIONS:BOOL=ON \
+        -DUSE_SSE4_INSTRUCTIONS:BOOL=ON \
         -DCMAKE_BUILD_TYPE="Release" \
         ".."
     popd
@@ -196,12 +201,16 @@ dlib::install_library()
 
 dlib_java::package_project()
 {
-    CI=1 mvn clean package
+    PKG_CONFIG_PATH="/tmp/dlib/usr/lib/pkgconfig:/tmp/opencv/usr/lib/pkgconfig:$( pkg-config --variable pc_path "pkg-config" )" \
+      mvn package
+      #LIBRARY_PATH="/tmp/dlib/usr/lib:/tmp/opencv/usr/lib"
+      #CPATH="/tmp/opencv/usr/include/opencv4:/tmp/dlib/usr/include/dlib"
 }
 
 dlib_java::exec_jar()
 {
-    LD_LIBRARY_PATH="/tmp/dlib/usr/lib;/tmp/opencv/usr/lib;/tmp/opencv/usr/share/OpenCV/java" java -jar "target/dlib-1.0-SNAPSHOT.jar"
+    LD_LIBRARY_PATH="/tmp/opencv/usr/lib/opencv4:/tmp/opencv/usr/share/java/opencv4:/tmp/dlib/usr/lib" java -jar "dlib/target/dlib-1.0-SNAPSHOT.jar" \
+      "$( find . -name "lena.jpg" -print | head -n1 )"
 }
 
 main "${@}"

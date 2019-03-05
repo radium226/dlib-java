@@ -69,6 +69,7 @@ public class Libraries {
 
     public static void loadLibrary(String libraryName) {
         UnsatisfiedLinkError lastUnsatisfiedLinkError = null;
+        int i = 0;
         for (LibraryLoader libraryLoader : libraryLoadersFor(libraryName)) {
             try {
                 libraryLoader.loadLibrary(libraryName);

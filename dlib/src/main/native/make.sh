@@ -2,7 +2,7 @@
 
 # FIXME We should replace this ugly shell script by a proper CmakeList.txt or even a Makefile
 
-set -e
+set -euo pipefail
 
 export SOURCE_FOLDER="src/main/native"
 export TARGET_FOLDER="target/native"
@@ -95,29 +95,32 @@ gcc::compile_object()
 {
     declare source_file_path="${1}"
     declare target_file_path="${2}"
-
     g++ \
         -fPIC \
         -fno-strict-aliasing \
         -I"/usr/lib/jvm/java-8-openjdk/include" \
         -I"/usr/lib/jvm/java-8-openjdk/include/linux" \
         $( pkg-config --cflags "dlib-1" ) \
-        $( pkg-config --cflags "opencv" ) \
+        $( pkg-config --cflags "opencv4" ) \
         -I"${SOURCE_FOLDER}" \
         -I"${SOURCE_FOLDER}/include" \
-        -c "${source_file_path}" -o "${target_file_path}"
+        -c "${source_file_path}" -o "${target_file_path}" \
+        -std=c++11
 }
 
 gcc::compile_shared_library()
 {
     declare so_file_path="${1}" ; shift
+    set -x
     g++ \
+        --verbose \
         -fPIC \
         -shared \
-        $( pkg-config --libs "opencv" ) \
+        $( pkg-config --libs "opencv4" ) \
         $( pkg-config --libs "dlib-1" ) \
         "${@}" \
         -o "${so_file_path}"
+    set +x
 }
 
 mvn::generate_resources()
@@ -132,7 +135,10 @@ mvn::generate_resources()
         source_file_path="${1}"
         target_file_path="${2}"
         log "${source_file_path} to ${target_file_path}" 1
-        gcc::compile_object "${source_file_path}" "${target_file_path}"
+        (
+          IFS="${old_ifs}" # We need to do that because g++ depends of the real IFS value
+          gcc::compile_object "${source_file_path}" "${target_file_path}"
+        )
     done
     IFS="${old_ifs}"
 
@@ -159,5 +165,4 @@ main() {
     esac
 
 }
-
 main "${@}"
