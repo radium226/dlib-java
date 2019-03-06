@@ -1,3 +1,4 @@
+dist: xenial
 language: java
 addons:
   apt:
@@ -5,7 +6,12 @@ addons:
     - "cmake"
     - "swig"
     - "build-essential"
+    - "yasm"
     - "git"
+    - "gfortran"
+    - "libjpeg8-dev"
+    - "libjasper-dev"
+    - "libpng12-dev"
     - "libgtk2.0-dev"
     - "pkg-config"
     - "libavcodec-dev"
@@ -18,7 +24,6 @@ addons:
     - "libjpeg-dev"
     - "libpng-dev"
     - "libtiff-dev"
-    - "libjasper-dev"
     - "libdc1394-22-dev"
     - "libblas-dev"
     - "liblapack-dev"
