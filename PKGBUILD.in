@@ -17,6 +17,6 @@ source=(
 
 package() {
   install -m755 -d "${pkgdir}/usr/share/java/dlib"
-  install -m644 "dlib-%{DLIB_VERSION}.jar" "${pkgdir}/usr/share/java/dlib/$( echo "dlib-%{DLIB_VERSION}.jar" | tr -d '.' )"
-  install -m644 "dlib-models-%{DLIB_VERSION}.jar" "${pkgdir}/usr/share/java/dlib/$( echo "dlib-models-%{DLIB_VERSION}.jar" | tr -d '.' )"
+  install -m644 "dlib-%{DLIB_VERSION}.jar" "${pkgdir}/usr/share/java/dlib/dlib.jar"
+  install -m644 "dlib-models-%{DLIB_VERSION}.jar" "${pkgdir}/usr/share/java/dlib/dlib-models.jar"
 }
