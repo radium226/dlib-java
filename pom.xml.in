@@ -5,7 +5,7 @@
 
     <groupId>com.github.radium226</groupId>
     <artifactId>dlib-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>%{DLIB_VERSION}</version>
 
     <name>DLib Parent</name>
 

@@ -103,7 +103,7 @@ public class FaceDescriptorComputerTest {
     }
 
     public static Mat openImage(Path filePath) {
-        return Imgcodecs.imread(filePath.toString(), Imgcodecs.CV_LOAD_IMAGE_COLOR);
+        return Imgcodecs.imread(filePath.toString(), Imgcodecs.IMREAD_COLOR);
     }
 
     public static Stream<Path> listFiles(Path folderPath) {

@@ -6,13 +6,13 @@
     <parent>
         <groupId>com.github.radium226</groupId>
         <artifactId>dlib-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>%{DLIB_VERSION}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.github.radium226</groupId>
     <artifactId>dlib-models</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>%{DLIB_VERSION}</version>
     <packaging>jar</packaging>
 
     <name>DLib Models</name>
