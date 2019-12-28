@@ -18,4 +18,6 @@ $(TARGET)/dlib-git-VERSION-x86_64.pkg.tar.xz: $(TARGET)/dlib/dlib-git/dlib-git-V
 	cp "$(TARGET)/dlib/dlib-git/dlib-git-VERSION-x86_64.pkg.tar.xz" "$(TARGET)/dlib-git-VERSION-x86_64.pkg.tar.xz"
 
 /usr/lib/libdlib.so: $(TARGET)/dlib-git-VERSION-x86_64.pkg.tar.xz
-	pacman -U "$(TARGET)/dlib-git-VERSION-x86_64.pkg.tar.xz" --noconfirm
+	sudo pacman \
+		-U "$(TARGET)/dlib-git-VERSION-x86_64.pkg.tar.xz" \
+		--noconfirm

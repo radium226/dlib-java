@@ -45,3 +45,6 @@ We also should ensure that:
 Once installed, you should ensure that:
 * The `/usr/lib/libdlib.so` shared library is present;
 * The `/usr/include/dlib` includes are presents. 
+
+## Building
+For the moment, everything can be handle through `make` and `docker` using `make package`: it will build OpenCV, DLib and finally make the JAR. 

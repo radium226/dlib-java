@@ -19,8 +19,8 @@ define compile
     g++ \
 		-fPIC \
 		-fno-strict-aliasing \
-		-I"/usr/lib/jvm/java-12-openjdk/include" \
-		-I"/usr/lib/jvm/java-12-openjdk/include/linux" \
+		-I"/usr/lib/jvm/java-8-openjdk/include" \
+		-I"/usr/lib/jvm/java-8-openjdk/include/linux" \
 		$(shell pkg-config --cflags "dlib-1" ) \
 		$(shell pkg-config --cflags "opencv4" ) \
 		-I"$(NATIVE)" \

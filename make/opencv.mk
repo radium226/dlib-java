@@ -16,9 +16,9 @@ $(TARGET)/opencv/trunk/opencv-$(OPENCV_ARCH_PGKVER)-$(OPENCV_ARCH_PKGREL)-x86_64
 $(TARGET)/opencv-$(OPENCV_ARCH_PGKVER)-$(OPENCV_ARCH_PKGREL)-x86_64.pkg.tar.xz:
 	cp "$(TARGET)/opencv/trunk/opencv-$(OPENCV_ARCH_PGKVER)-$(OPENCV_ARCH_PKGREL)-x86_64.pkg.tar.xz" "$(TARGET)/opencv-$(OPENCV_ARCH_PGKVER)-$(OPENCV_ARCH_PKGREL)-x86_64.pkg.tar.xz"
 
-/usr/share/java/opencv4/opencv-$(shell echo '$(OPENCV_VERSION)' | tr -d '.').jar /usr/lib/libopencv_java$(shell echo '$(OPENCV_VERSION)' | tr -d '.').so: $(TARGET)/opencv/trunk/opencv-$(OPENCV_VERSION)-1-x86_64.pkg.tar.xz
-	pacman \
-		-U "$(TARGET)/opencv/trunk/opencv-$(OPENCV_VERSION)-1-x86_64.pkg.tar.xz" \
+/usr/share/java/opencv4/opencv-$(shell echo '$(OPENCV_VERSION)' | tr -d '.').jar /usr/lib/libopencv_java$(shell echo '$(OPENCV_VERSION)' | tr -d '.').so: $(TARGET)/opencv-$(OPENCV_VERSION)-1-x86_64.pkg.tar.xz
+	sudo pacman \
+		-U "$(TARGET)/opencv-$(OPENCV_VERSION)-1-x86_64.pkg.tar.xz" \
 		--noconfirm
 
 $(TARGET)/.m2/repository/opencv/opencv/$(OPENCV_VERSION)/opencv-$(OPENCV_VERSION).jar: /usr/share/java/opencv4/opencv-$(shell echo '$(OPENCV_VERSION)' | tr -d '.').jar
