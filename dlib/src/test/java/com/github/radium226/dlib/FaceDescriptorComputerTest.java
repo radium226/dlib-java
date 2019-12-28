@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-@Ignore
 public class FaceDescriptorComputerTest {
 
     private static FaceDescriptorComputer FACE_DESCRIPTOR_COMPUTER = null;

@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
-@Ignore
 public class ShapePredictorTest {
 
     @BeforeClass
@@ -60,7 +59,7 @@ public class ShapePredictorTest {
         }
 
         drawMakers(lenaFaceMat, landmarks);
-        Showcase.displayImageUsingOpenCVInJava(lenaFaceMat);
+        //Showcase.displayImageUsingOpenCVInJava(lenaFaceMat);
 
     }
 
