@@ -27,9 +27,9 @@ package: $(TARGET)/dlib/target/dlib-$(VERSION).jar
 
 .PHONY: clean
 clean:
+	sudo rm -Rf "$(TARGET)/pacman"
+	rm -Rf "$(TARGET)/dlib"
+	rm -Rf "$(TARGET)/opencv"
 	mvn \
 		-Dmaven.repo.local="$(shell pwd)/$(TARGET)/.m2/repository" \
 		clean
-	sudo rm -Rf $(TARGET)/pacman"
-	rm -Rf $(TARGET)/dlib
-	rm -Rf $(TARGET)/opencv
