@@ -1,3 +1,8 @@
+#!/usr/bin/make
+
+.SHELLFLAGS = -e -u -c
+.ONESHELL:
+
 .PHONY: generate-resources
 
 BZIP2=bzip2

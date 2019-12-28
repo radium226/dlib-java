@@ -12,8 +12,9 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>resources</module>
         <module>dlib</module>
-        <module>dlib-models</module>
+        <module>models</module>
     </modules>
 
 </project>

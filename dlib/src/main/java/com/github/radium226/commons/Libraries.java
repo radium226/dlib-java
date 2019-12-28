@@ -38,20 +38,11 @@ public class Libraries {
         }
     };
 
-    public static LibraryLoader SWIG_GENERATED_RESOURCES = libraryName -> {
+    public static LibraryLoader GENERATED_RESOURCES = libraryName -> {
         Path libraryFilePath = Paths
                 .get(System.getProperty("user.dir"))
-                .resolve("target/generated-resources/swig/")
+                .resolve("dlib/target/generated-resources/make")
                 .resolve(libraryFileName(libraryName));
-        if (Files.exists(libraryFilePath)) {
-            System.load(libraryFilePath.toString());
-        } else {
-            throw new UnsatisfiedLinkError(libraryName);
-        }
-    };
-
-    public static LibraryLoader OPENCV_JAVA = libraryName -> {
-        Path libraryFilePath = Paths.get("/usr/share/opencv/java").resolve(libraryFileName(libraryName));
         if (Files.exists(libraryFilePath)) {
             System.load(libraryFilePath.toString());
         } else {
@@ -64,7 +55,7 @@ public class Libraries {
     }
 
     public static List<LibraryLoader> libraryLoadersFor(String libraryName) {
-        return Arrays.asList(SYSTEM, RESOURCES, SWIG_GENERATED_RESOURCES, OPENCV_JAVA);
+        return Arrays.asList(SYSTEM, RESOURCES, GENERATED_RESOURCES);
     }
 
     public static void loadLibrary(String libraryName) {

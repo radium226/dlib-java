@@ -1,6 +1,8 @@
 package com.github.radium226.dlib;
 
 import com.github.radium226.dlib.examples.Showcase;
+import com.github.radium226.io.Resource;
+import com.github.radium226.opencv.OpenCVModels;
 import com.github.radium266.dlib.swig.ShapePredictor;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -11,7 +13,7 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 
 import java.io.IOException;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.List;
 
 @Ignore
@@ -26,8 +28,9 @@ public class ShapePredictorTest {
         super();
     }
 
-    public List<Rect> detectFaces(Mat mat) {
-        CascadeClassifier cascadeClassifier = new CascadeClassifier("/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml");
+    public List<Rect> detectFaces(Mat mat) throws IOException {
+        Path haarCascadeFilePath = OpenCVModels.HAAR_CASCADE_FRONTAL_FACE.getPath();
+        CascadeClassifier cascadeClassifier = new CascadeClassifier(haarCascadeFilePath.toString());
         MatOfRect rects = new MatOfRect();
         cascadeClassifier.detectMultiScale(mat, rects);
         return rects.toList();
@@ -40,7 +43,7 @@ public class ShapePredictorTest {
 
     @Test
     public void testPredictShapeWithLena() throws IOException {
-        Mat lenaMat = Showcase.openMatUsingImageIO(Paths.get("src/main/resources/lena.jpg"));
+        Mat lenaMat = Showcase.openMatUsingImageIO(Resource.byName("lena.jpg").getPath());
         List<Rect> faceBounds = detectFaces(lenaMat);
         Assert.assertEquals(1, faceBounds.size());
         Rect faceBound = faceBounds.get(0);
@@ -49,7 +52,8 @@ public class ShapePredictorTest {
         //Imgproc.rectangle(lenaMat, new Point(faceBound.x, faceBound.y), new Point(faceBound.x + faceBound.width, faceBound.y + faceBound.height), new Scalar(255, 255, 255));
         //Swig.displayImageUsingOpenCVInJava(lenaMat);
 
-        ShapePredictor shapePredictor = new ShapePredictor("src/test/resources/shape_predictor_68_face_landmarks.dat");
+        Path shapePredictorModelFilePath = DLibModels.SHAPE_PREDICTOR_68_FACE_LANDMARKS.getPath();
+        ShapePredictor shapePredictor = new ShapePredictor(shapePredictorModelFilePath.toString());
         List<Point> landmarks = shapePredictor.predictShape(lenaFaceMat);
         for (Point landmark : landmarks) {
             System.out.println(landmark);

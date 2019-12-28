@@ -31,41 +31,18 @@
                 <version>1.6.0</version>
                 <executions>
                     <execution>
-                        <id>make-initialize</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>src/main/native/make.sh</executable>
-                            <arguments>
-                                <argument>initialize</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>make-generate-sources</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>src/main/native/make.sh</executable>
-                            <arguments>
-                                <argument>generate-sources</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>make-generate-resources</id>
+                        <id>make-shared-library</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <executable>src/main/native/make.sh</executable>
+                            <workingDirectory>${project.build.directory}</workingDirectory>
+                            <executable>make</executable>
                             <arguments>
-                                <argument>generate-resources</argument>
+                                <argument>--makefile=${project.basedir}/src/main/native/Makefile</argument>
+                                <argument>shared-library</argument>
+                                <argument>PROJECT=${project.basedir}</argument>
                             </arguments>
                         </configuration>
                     </execution>
@@ -85,7 +62,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.build.directory}/generated-sources/swig</source>
+                                <source>${project.build.directory}/generated-sources/make/java</source>
                             </sources>
                         </configuration>
                     </execution>
@@ -98,7 +75,7 @@
                         <configuration>
                             <resources>
                                 <resource>
-                                    <directory>${project.build.directory}/generated-resources/swig</directory>
+                                    <directory>${project.build.directory}/generated-resources/make</directory>
                                     <includes>
                                         <include>*.so</include>
                                     </includes>
@@ -145,15 +122,15 @@
     <dependencies>
         <!--
             mvn install:install-file \
-                -Dfile="/usr/share/opencv/java/opencv-341.jar" \
+                -Dfile="/usr/share/java/opencv4/opencv-420.jar" \
                 -DgroupId="opencv" \
-                -DartifactId="opencv" -Dversion="3.4.1" \
+                -DartifactId="opencv" -Dversion="4.2.0" \
                 -Dpackaging="jar"
         -->
         <dependency>
             <groupId>opencv</groupId>
             <artifactId>opencv</artifactId>
-            <version>3.4.1</version>
+            <version>4.2.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -165,6 +142,16 @@
             <groupId>tw.edu.sju.ee.eea.commons</groupId>
             <artifactId>commons-nativeutils</artifactId>
             <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.radium226</groupId>
+            <artifactId>models</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.radium226</groupId>
+            <artifactId>resources</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
     </dependencies>

@@ -1,5 +1,6 @@
 package com.github.radium226.dlib;
 
+import com.github.radium226.io.Resource;
 import com.github.radium226.opencv.OpenCV;
 import com.github.radium266.dlib.swig.FaceDescriptorComputer;
 import org.junit.BeforeClass;
@@ -14,7 +15,6 @@ import org.opencv.objdetect.CascadeClassifier;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -27,25 +27,27 @@ public class FaceDescriptorComputerTest {
     private static CascadeClassifier FRONTAL_FACE_CASCADE_CLASSIFIER = null;
 
     @BeforeClass
-    public static void setUp() {
+    public static void setUp() throws IOException {
         DLib.loadLibraries();
         OpenCV.loadLibraries();
 
         System.out.println("Loading models... ");
-        FACE_DESCRIPTOR_COMPUTER = new FaceDescriptorComputer("/home/adrien/Personal/Projects/dlib-java/src/test/resources/shape_predictor_68_face_landmarks.dat", "/home/adrien/Personal/Projects/dlib-java/src/test/resources/dlib_face_recognition_resnet_model_v1.dat");
-        FRONTAL_FACE_CASCADE_CLASSIFIER = new CascadeClassifier("/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml");;
+        Path faceShapePredictorModelFilePath = DLibModels.SHAPE_PREDICTOR_68_FACE_LANDMARKS.copyToTempFolder();
+        Path faceNetworkModelFilePath = DLibModels.DLIB_FACE_RECOGNITION_RESNET_MODEL_V1.copyToTempFolder();
+        FACE_DESCRIPTOR_COMPUTER = new FaceDescriptorComputer(faceShapePredictorModelFilePath.toString(), faceNetworkModelFilePath.toString());
+        FRONTAL_FACE_CASCADE_CLASSIFIER = new CascadeClassifier("/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml");;
         System.out.println("Done! ");
     }
 
     @Test
-    public void testComputeFaceDescriptor() {
+    public void testComputeFaceDescriptor() throws IOException {
         System.out.println("Learning known faces... ");
-        Map<String, Mat> knownFaces = learnKnownFaces(Paths.get("/home/adrien/Personal/Projects/dlib-java/src/test/resources/known-faces"));
+        Map<String, Mat> knownFaces = learnKnownFaces(Resource.byName("known-faces").getPath());
         System.out.println("knownFaces=" + knownFaces);
         System.out.println("Done! ");
 
         System.out.println("Recognizing unknown faces... ");
-        listFiles(Paths.get("/home/adrien/Personal/Projects/dlib-java/src/test/resources/unknown-faces"))
+        listFiles(Resource.byName("unknown-faces").getPath())
             .forEach(filePath -> {
                 Mat faceDescriptor = computeFaceDescriptor(filePath);
 
@@ -103,7 +105,7 @@ public class FaceDescriptorComputerTest {
     }
 
     public static Mat openImage(Path filePath) {
-        return Imgcodecs.imread(filePath.toString(), Imgcodecs.CV_LOAD_IMAGE_COLOR);
+        return Imgcodecs.imread(filePath.toString(), Imgcodecs.IMREAD_COLOR);
     }
 
     public static Stream<Path> listFiles(Path folderPath) {
