@@ -1,30 +1,39 @@
-BUILD:=build
+TARGET:=target
 JDK:=jdk8-openjdk
 
 .PHONY: clean
-clean:
-	rm -Rf "$(BUILD)"
-
-.PHONY: builder-docker-image
-builder-docker-image:
-	docker \
-		build \
-			--file "docker/Dockerfile" \
-			--tag "dlib-java-builder" \
-			--build-arg USER_ID="$(shell id -u)" \
-			--build-arg GROUP_ID="$(shell id -g)" \
-			--build-arg JDK="$(JDK)" \
-			"docker"
-
-.PHONY: build-opencv
-build-opencv: $(BUILD)/opencv/trunk/opencv-4.2.0-1-x86_64.pkg.tar.xz
-
-$(BUILD)/opencv/trunk/opencv-4.2.0-1-x86_64.pkg.tar.xz: builder-docker-image
-	mkdir -p "$(BUILD)"
+clean: docker-image-make
 	docker \
 		run \
 			--user "$(shell id -u):$(shell id -g)" \
-			--mount type="bind",source="$(shell pwd)/$(BUILD)",target="/mnt/build" \
+			--mount type="bind",source="$(shell pwd)",target="/mnt/dlib-java" \
+			--workdir="/mnt/dlib-java" \
 			--rm \
-			"dlib-java-builder" \
-			"build-opencv"
+			"dlib-java-make" \
+			"--makefile=make/make.mk" \
+			"clean"
+	rm -Rf "$(TARGET)"
+
+.PHONY: docker-image-make
+docker-image-make:
+	# We can skip sending the context using this trick
+	cat "Dockerfile" | docker \
+		build \
+			--tag "dlib-java-make" \
+			--build-arg USER_ID="$(shell id -u)" \
+			--build-arg GROUP_ID="$(shell id -g)" \
+			--build-arg JDK="$(JDK)" \
+			"-"
+
+.PHONY: package
+package: docker-image-make
+	mkdir -p "$(TARGET)"
+	docker \
+		run \
+			--user "$(shell id -u):$(shell id -g)" \
+			--mount type="bind",source="$(shell pwd)",target="/mnt/dlib-java" \
+			--workdir="/mnt/dlib-java" \
+			--rm \
+			"dlib-java-make" \
+			"--makefile=make/make.mk" \
+			"package"
