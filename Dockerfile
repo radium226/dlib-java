@@ -13,6 +13,7 @@ RUN pacman -Sy --noconfirm && \
       "${JDK}" \
       "wget" \
       "maven" \
+      "swig" \
       --noconfirm
 
 RUN mkdir -p \
