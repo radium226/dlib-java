@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class Libraries {
 
@@ -38,24 +39,27 @@ public class Libraries {
         }
     };
 
-    public static LibraryLoader GENERATED_RESOURCES = libraryName -> {
-        Path libraryFilePath = Paths
-                .get(System.getProperty("user.dir"))
-                .resolve("dlib/target/generated-resources/make")
-                .resolve(libraryFileName(libraryName));
-        if (Files.exists(libraryFilePath)) {
-            System.load(libraryFilePath.toString());
-        } else {
-            throw new UnsatisfiedLinkError(libraryName);
-        }
-    };
+    public static LibraryLoader generatedResources(Optional<String> prefix) {
+        return libraryName -> {
+            Path currentFolderPath = Paths.get(System.getProperty("user.dir"));
+            Path libraryFilePath = prefix.map(currentFolderPath::resolve).orElseGet(() -> currentFolderPath)
+                    .resolve("target/generated-resources/make")
+                    .resolve(libraryFileName(libraryName));
+
+            if (Files.exists(libraryFilePath)) {
+                System.load(libraryFilePath.toString());
+            } else {
+                throw new UnsatisfiedLinkError(libraryName);
+            }
+        };
+    }
 
     public static String libraryFileName(String libraryName) {
         return "lib" + libraryName + ".so";
     }
 
     public static List<LibraryLoader> libraryLoadersFor(String libraryName) {
-        return Arrays.asList(SYSTEM, RESOURCES, GENERATED_RESOURCES);
+        return Arrays.asList(SYSTEM, RESOURCES, generatedResources(Optional.empty()), generatedResources(Optional.of("dlib")));
     }
 
     public static void loadLibrary(String libraryName) {

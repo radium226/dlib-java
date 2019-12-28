@@ -51,7 +51,7 @@ public class ShapePredictorTest {
         //Imgproc.rectangle(lenaMat, new Point(faceBound.x, faceBound.y), new Point(faceBound.x + faceBound.width, faceBound.y + faceBound.height), new Scalar(255, 255, 255));
         //Swig.displayImageUsingOpenCVInJava(lenaMat);
 
-        Path shapePredictorModelFilePath = DLibModels.SHAPE_PREDICTOR_68_FACE_LANDMARKS.getPath();
+        Path shapePredictorModelFilePath = DLibModels.SHAPE_PREDICTOR_68_FACE_LANDMARKS.copyToTempFolder();
         ShapePredictor shapePredictor = new ShapePredictor(shapePredictorModelFilePath.toString());
         List<Point> landmarks = shapePredictor.predictShape(lenaFaceMat);
         for (Point landmark : landmarks) {

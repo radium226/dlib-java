@@ -92,7 +92,7 @@ public class Resource {
     }
 
     public Path copyTo(Path folderPath) throws IOException {
-        Path copiedFilePath = folderPath.resolve(getPath().getFileName());
+        Path copiedFilePath = folderPath.resolve(getName());
         if (!Files.exists(copiedFilePath)) {
             Files.copy(getClass().getClassLoader().getResourceAsStream(getName()), copiedFilePath);
         }

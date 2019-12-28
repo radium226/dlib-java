@@ -2,9 +2,6 @@ package com.github.radium226.opencv;
 
 import com.github.radium226.commons.Libraries;
 
-import java.util.Arrays;
-import java.util.Optional;
-
 public class OpenCV {
 
     public static void loadLibraries() {

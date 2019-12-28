@@ -113,7 +113,6 @@ public class FaceDescriptorComputerTest {
                     .stream(Spliterators.spliteratorUnknownSize(Files.newDirectoryStream(folderPath).iterator(), Spliterator.ORDERED), false)
                     .filter(Files::isRegularFile);
         } catch (IOException e) {
-            e.printStackTrace();
             return Stream.empty();
         }
     }
