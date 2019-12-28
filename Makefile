@@ -37,3 +37,9 @@ package: docker-image-make
 			"dlib-java-make" \
 			"--makefile=make/make.mk" \
 			"package"
+
+.PHONY: install
+install: package
+	mvn \
+		install \
+		-DskipTests
