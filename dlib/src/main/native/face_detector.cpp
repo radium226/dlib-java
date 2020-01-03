@@ -16,8 +16,10 @@ FaceDetector::FaceDetector() {
     this->frontal_face_detector = dlib::get_frontal_face_detector();
 }
 
-std::vector<cv::Rect> FaceDetector::detectFaces(cv::Mat mat) {
-    std::vector<dlib::rectangle> dlib_rectangles = this->frontal_face_detector(dlib::cv_image<dlib::bgr_pixel>(mat));
+std::vector<cv::Rect> FaceDetector::detectFaces(cv::Mat cv_mat) {
+    dlib::cv_image<dlib::bgr_pixel> dlib_image(cv_mat);
+    //pyramid_up(dlib_image);
+    std::vector<dlib::rectangle> dlib_rectangles = this->frontal_face_detector(dlib::cv_image<dlib::bgr_pixel>(dlib_image));
     std::vector<cv::Rect> cv_rects;
     for(auto const& dlib_rectangle: dlib_rectangles) {
         cv::Rect cv_rect = cv::Rect(

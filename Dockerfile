@@ -4,6 +4,7 @@ ARG USER_ID
 ARG GROUP_ID
 ARG JDK
 
+RUN pacman -Sy "archlinux-keyring" --noconfirm
 RUN pacman -Sy --noconfirm && \
     pacman -S \
       "sudo" \

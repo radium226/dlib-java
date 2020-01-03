@@ -5,6 +5,7 @@ $(TARGET)/dlib/dlib-git.tar.gz:
 
 $(TARGET)/dlib/dlib-git/PKGBUILD: $(TARGET)/dlib/dlib-git.tar.gz
 	tar xzf "$(TARGET)/dlib/dlib-git.tar.gz" -C "$(TARGET)/dlib"
+	cp "make/dlib/PKGBUILD" "$(TARGET)/dlib/dlib-git/PKGBUILD"
 
 $(TARGET)/dlib/dlib-git/dlib-git-VERSION-x86_64.pkg.tar.xz: $(TARGET)/dlib/dlib-git/PKGBUILD
 	cd "$(TARGET)/dlib/dlib-git"
