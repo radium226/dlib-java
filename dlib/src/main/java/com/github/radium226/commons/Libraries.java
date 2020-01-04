@@ -59,7 +59,7 @@ public class Libraries {
     }
 
     public static List<LibraryLoader> libraryLoadersFor(String libraryName) {
-        return Arrays.asList(SYSTEM, RESOURCES, generatedResources(Optional.empty()), generatedResources(Optional.of("dlib")));
+        return Arrays.asList(RESOURCES, SYSTEM, generatedResources(Optional.empty()), generatedResources(Optional.of("dlib")));
     }
 
     public static void loadLibrary(String libraryName) {
@@ -74,6 +74,7 @@ public class Libraries {
             }
 
             if (lastUnsatisfiedLinkError == null) {
+                System.out.println("Yay! ");
                 break;
             }
         }

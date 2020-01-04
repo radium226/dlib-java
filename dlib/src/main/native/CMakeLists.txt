@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.12)
 project(dlib-java)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-set(JAVA_PACKAGE com.github.radium266.dlib.swig)
+set(JAVA_PACKAGE "com.github.radium266.dlib.swig")
 set(CMAKE_SWIG_OUTDIR com/github/radium226/dlib/swig)
 
 # DLib
@@ -24,24 +24,22 @@ include_directories(${JNI_INCLUDE_DIRS})
 # Swig
 find_package(SWIG REQUIRED)
 include(UseSWIG)
+set(UseSWIG_TARGET_NAME_PREFERENCE STANDARD)
 
 include_directories("include")
 include_directories("swig")
 set(CMAKE_SWIG_FLAGS -package "${JAVA_PACKAGE}" -I-)
 string(REPLACE "." "/" CMAKE_SWIG_OUTDIR "generated-sources/${JAVA_PACKAGE}")
-set_property(SOURCE swig/dlib.i PROPERTY CPLUSPLUS ON)
-swig_add_library(dlib_wrap
-    TYPE SHARED
-    LANGUAGE java
-    SOURCES "swig/dlib.i"
-    OUTFILE_DIR "."
-)
 
-set_property(SOURCE swig/showcase.i PROPERTY CPLUSPLUS ON)
-swig_add_library(showcase_wrap
-    TYPE SHARED
+set_property(SOURCE "swig/dlib.i" PROPERTY CPLUSPLUS ON)
+set_property(SOURCE "swig/dlib.i" PROPERTY SWIG_MODULE_NAME "dlib_wrap")
+set_property(SOURCE "swig/showcase.i" PROPERTY CPLUSPLUS ON)
+set_property(SOURCE "swig/showcase.i" PROPERTY SWIG_MODULE_NAME "showcase_wrap")
+swig_add_library(wrap
+    TYPE STATIC
     LANGUAGE java
-    SOURCES "swig/showcase.i"
+    SOURCES "swig/dlib.i" "swig/showcase.i"
+    OUTFILE_DIR "."
 )
 
 # Compile
@@ -57,4 +55,12 @@ add_library(dlib-java SHARED
 set_property(TARGET dlib-java PROPERTY
     LIBRARY_OUTPUT_DIRECTORY "generated-resources"
 )
-target_link_libraries(dlib-java dlib::dlib ${SWIG_MODULE_dlib_wrap_REAL_NAME})
+
+target_link_libraries(dlib-java
+    "-Wl,--whole-archive"
+    wrap
+    "-Wl,--no-whole-archive"
+    ${OpenCV_LIBRARIES}
+    ${JNI_LIBRARIES}
+    dlib::dlib
+)

@@ -1,0 +1,560 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] DLib Parent                                                        [pom]
+[INFO] Resources                                                          [jar]
+[INFO] DLib                                                               [jar]
+[INFO] 
+[INFO] ------------------< com.github.radium226:dlib-parent >------------------
+[INFO] Building DLib Parent 1.0-SNAPSHOT                                  [1/3]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ dlib-parent ---
+[INFO] 
+[INFO] -------------------< com.github.radium226:resources >-------------------
+[INFO] Building Resources 1.0-SNAPSHOT                                    [2/3]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ resources ---
+[INFO] Deleting /home/adrien.besnard/Personal/Projects/dlib-java/resources/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ resources ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/adrien.besnard/Personal/Projects/dlib-java/resources/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ resources ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /home/adrien.besnard/Personal/Projects/dlib-java/resources/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ resources ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/adrien.besnard/Personal/Projects/dlib-java/resources/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ resources ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ resources ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/adrien.besnard/Personal/Projects/dlib-java/resources/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ resources ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ resources ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ---------------------< com.github.radium226:dlib >----------------------
+[INFO] Building DLib 1.0-SNAPSHOT                                         [3/3]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ dlib ---
+[INFO] Deleting /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target
+[INFO] 
+[INFO] --- exec-maven-plugin:1.6.0:exec (cmake) @ dlib ---
+-- The C compiler identification is GNU 9.2.0
+-- The CXX compiler identification is GNU 9.2.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Using CMake version: 3.16.2
+-- Compiling dlib version: 19.19.99
+-- Enabling AVX instructions
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Found X11: /usr/include   
+-- Looking for XOpenDisplay in /usr/lib/libX11.so;/usr/lib/libXext.so
+-- Looking for XOpenDisplay in /usr/lib/libX11.so;/usr/lib/libXext.so - found
+-- Looking for gethostbyname
+-- Looking for gethostbyname - found
+-- Looking for connect
+-- Looking for connect - found
+-- Looking for remove
+-- Looking for remove - found
+-- Looking for shmat
+-- Looking for shmat - found
+-- Looking for IceConnectionNumber in ICE
+-- Looking for IceConnectionNumber in ICE - found
+-- Found system copy of libpng: /usr/lib/libpng.so;/usr/lib/libz.so
+-- Found system copy of libjpeg: /usr/lib/libjpeg.so
+-- Searching for BLAS and LAPACK
+-- Searching for BLAS and LAPACK
+-- Found PkgConfig: /usr/bin/pkg-config (found version "1.6.3") 
+-- Checking for module 'cblas'
+--   Found cblas, version 3.9.0
+-- Checking for module 'lapack'
+--   Found lapack, version 3.9.0
+-- Found BLAS and LAPACK via pkg-config
+-- Could NOT find CUDA (missing: CUDA_TOOLKIT_ROOT_DIR CUDA_NVCC_EXECUTABLE CUDA_INCLUDE_DIRS CUDA_CUDART_LIBRARY) (Required is at least version "7.5")
+-- DID NOT FIND CUDA
+-- Disabling CUDA support for dlib.  DLIB WILL NOT USE CUDA
+-- C++11 activated.
+-- Found OpenCV: /usr (found version "4.2.0") 
+-- Found JNI: /usr/lib/jvm/default/jre/lib/amd64/libjawt.so  
+-- Found SWIG: /usr/bin/swig (found version "4.0.1") 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.0.0:add-source (generate-sources) @ dlib ---
+[INFO] Source directory: /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/generated-sources added.
+[INFO] 
+[INFO] --- exec-maven-plugin:1.6.0:exec (make) @ dlib ---
+/usr/bin/cmake -S/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native -B/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/progress.marks
+/usr/bin/make -f CMakeFiles/Makefile2 all
+make[1]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+/usr/bin/make -f _deps/dlib-build/dlib/CMakeFiles/dlib.dir/build.make _deps/dlib-build/dlib/CMakeFiles/dlib.dir/depend
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib/CMakeFiles/dlib.dir/DependInfo.cmake --color=
+Dependee "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib/CMakeFiles/dlib.dir/DependInfo.cmake" is newer than depender "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib/CMakeFiles/dlib.dir/depend.internal".
+Dependee "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib/CMakeFiles/CMakeDirectoryInformation.cmake" is newer than depender "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib/CMakeFiles/dlib.dir/depend.internal".
+Scanning dependencies of target dlib
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+/usr/bin/make -f _deps/dlib-build/dlib/CMakeFiles/dlib.dir/build.make _deps/dlib-build/dlib/CMakeFiles/dlib.dir/build
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+[  1%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/base64/base64_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/base64/base64_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/base64/base64_kernel_1.cpp
+[  2%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/bigint/bigint_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/bigint/bigint_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/bigint/bigint_kernel_1.cpp
+[  4%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/bigint/bigint_kernel_2.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/bigint/bigint_kernel_2.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/bigint/bigint_kernel_2.cpp
+[  5%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/bit_stream/bit_stream_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/bit_stream/bit_stream_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/bit_stream/bit_stream_kernel_1.cpp
+[  7%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/entropy_decoder/entropy_decoder_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/entropy_decoder/entropy_decoder_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/entropy_decoder/entropy_decoder_kernel_1.cpp
+[  8%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/entropy_decoder/entropy_decoder_kernel_2.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/entropy_decoder/entropy_decoder_kernel_2.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/entropy_decoder/entropy_decoder_kernel_2.cpp
+[ 10%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/entropy_encoder/entropy_encoder_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/entropy_encoder/entropy_encoder_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/entropy_encoder/entropy_encoder_kernel_1.cpp
+[ 11%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/entropy_encoder/entropy_encoder_kernel_2.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/entropy_encoder/entropy_encoder_kernel_2.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/entropy_encoder/entropy_encoder_kernel_2.cpp
+[ 13%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/md5/md5_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/md5/md5_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/md5/md5_kernel_1.cpp
+[ 14%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/tokenizer/tokenizer_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/tokenizer/tokenizer_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/tokenizer/tokenizer_kernel_1.cpp
+[ 15%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/unicode/unicode.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/unicode/unicode.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/unicode/unicode.cpp
+[ 17%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/data_io/image_dataset_metadata.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/data_io/image_dataset_metadata.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/data_io/image_dataset_metadata.cpp
+[ 18%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/data_io/mnist.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/data_io/mnist.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/data_io/mnist.cpp
+[ 20%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/global_optimization/global_function_search.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/global_optimization/global_function_search.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/global_optimization/global_function_search.cpp
+[ 21%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/filtering/kalman_filter.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/filtering/kalman_filter.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/filtering/kalman_filter.cpp
+[ 23%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/test_for_odr_violations.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/test_for_odr_violations.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/test_for_odr_violations.cpp
+[ 24%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/svm/auto.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/svm/auto.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/svm/auto.cpp
+[ 26%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/sockets/sockets_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/sockets/sockets_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/sockets/sockets_kernel_1.cpp
+[ 27%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/bsp/bsp.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/bsp/bsp.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/bsp/bsp.cpp
+[ 28%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/dir_nav/dir_nav_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/dir_nav/dir_nav_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/dir_nav/dir_nav_kernel_1.cpp
+[ 30%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/dir_nav/dir_nav_kernel_2.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/dir_nav/dir_nav_kernel_2.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/dir_nav/dir_nav_kernel_2.cpp
+[ 31%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/dir_nav/dir_nav_extensions.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/dir_nav/dir_nav_extensions.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/dir_nav/dir_nav_extensions.cpp
+[ 33%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/linker/linker_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/linker/linker_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/linker/linker_kernel_1.cpp
+[ 34%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/logger/extra_logger_headers.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/logger/extra_logger_headers.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/logger/extra_logger_headers.cpp
+[ 36%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/logger/logger_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/logger/logger_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/logger/logger_kernel_1.cpp
+[ 37%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/logger/logger_config_file.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/logger/logger_config_file.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/logger/logger_config_file.cpp
+[ 39%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/misc_api/misc_api_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/misc_api/misc_api_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/misc_api/misc_api_kernel_1.cpp
+[ 40%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/misc_api/misc_api_kernel_2.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/misc_api/misc_api_kernel_2.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/misc_api/misc_api_kernel_2.cpp
+[ 42%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/sockets/sockets_extensions.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/sockets/sockets_extensions.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/sockets/sockets_extensions.cpp
+[ 43%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/sockets/sockets_kernel_2.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/sockets/sockets_kernel_2.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/sockets/sockets_kernel_2.cpp
+[ 44%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/sockstreambuf/sockstreambuf.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/sockstreambuf/sockstreambuf.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/sockstreambuf/sockstreambuf.cpp
+[ 46%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/sockstreambuf/sockstreambuf_unbuffered.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/sockstreambuf/sockstreambuf_unbuffered.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/sockstreambuf/sockstreambuf_unbuffered.cpp
+[ 47%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/server/server_kernel.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/server/server_kernel.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/server/server_kernel.cpp
+[ 49%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/server/server_iostream.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/server/server_iostream.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/server/server_iostream.cpp
+[ 50%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/server/server_http.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/server/server_http.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/server/server_http.cpp
+[ 52%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/threads/multithreaded_object_extension.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/threads/multithreaded_object_extension.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/threads/multithreaded_object_extension.cpp
+[ 53%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/threads/threaded_object_extension.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/threads/threaded_object_extension.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/threads/threaded_object_extension.cpp
+[ 55%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/threads/threads_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/threads/threads_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/threads/threads_kernel_1.cpp
+[ 56%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/threads/threads_kernel_2.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/threads/threads_kernel_2.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/threads/threads_kernel_2.cpp
+[ 57%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/threads/threads_kernel_shared.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/threads/threads_kernel_shared.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/threads/threads_kernel_shared.cpp
+[ 59%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/threads/thread_pool_extension.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/threads/thread_pool_extension.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/threads/thread_pool_extension.cpp
+[ 60%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/threads/async.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/threads/async.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/threads/async.cpp
+[ 62%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/timer/timer.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/timer/timer.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/timer/timer.cpp
+[ 63%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/stack_trace.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/stack_trace.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/stack_trace.cpp
+[ 65%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/cuda/cpu_dlib.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/cuda/cpu_dlib.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/cuda/cpu_dlib.cpp
+[ 66%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/cuda/tensor_tools.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/cuda/tensor_tools.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/cuda/tensor_tools.cpp
+[ 68%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/gui_widgets/fonts.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/gui_widgets/fonts.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/gui_widgets/fonts.cpp
+[ 69%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/gui_widgets/widgets.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/gui_widgets/widgets.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/gui_widgets/widgets.cpp
+[ 71%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/gui_widgets/drawable.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/gui_widgets/drawable.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/gui_widgets/drawable.cpp
+[ 72%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/gui_widgets/canvas_drawing.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/gui_widgets/canvas_drawing.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/gui_widgets/canvas_drawing.cpp
+[ 73%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/gui_widgets/style.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/gui_widgets/style.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/gui_widgets/style.cpp
+[ 75%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/gui_widgets/base_widgets.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/gui_widgets/base_widgets.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/gui_widgets/base_widgets.cpp
+[ 76%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/gui_core/gui_core_kernel_1.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/gui_core/gui_core_kernel_1.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/gui_core/gui_core_kernel_1.cpp
+[ 78%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/gui_core/gui_core_kernel_2.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/gui_core/gui_core_kernel_2.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/gui_core/gui_core_kernel_2.cpp
+[ 79%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/image_loader/png_loader.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/image_loader/png_loader.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/image_loader/png_loader.cpp
+[ 81%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/image_saver/save_png.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/image_saver/save_png.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/image_saver/save_png.cpp
+[ 82%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/image_loader/jpeg_loader.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/image_loader/jpeg_loader.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/image_loader/jpeg_loader.cpp
+[ 84%] Building CXX object _deps/dlib-build/dlib/CMakeFiles/dlib.dir/image_saver/save_jpeg.cpp.o
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/c++    -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib.dir/image_saver/save_jpeg.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/image_saver/save_jpeg.cpp
+[ 85%] Linking CXX static library libdlib.a
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/cmake -P CMakeFiles/dlib.dir/cmake_clean_target.cmake
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib && /usr/bin/cmake -E cmake_link_script CMakeFiles/dlib.dir/link.txt --verbose=1
+/usr/bin/ar qc libdlib.a  CMakeFiles/dlib.dir/base64/base64_kernel_1.cpp.o CMakeFiles/dlib.dir/bigint/bigint_kernel_1.cpp.o CMakeFiles/dlib.dir/bigint/bigint_kernel_2.cpp.o CMakeFiles/dlib.dir/bit_stream/bit_stream_kernel_1.cpp.o CMakeFiles/dlib.dir/entropy_decoder/entropy_decoder_kernel_1.cpp.o CMakeFiles/dlib.dir/entropy_decoder/entropy_decoder_kernel_2.cpp.o CMakeFiles/dlib.dir/entropy_encoder/entropy_encoder_kernel_1.cpp.o CMakeFiles/dlib.dir/entropy_encoder/entropy_encoder_kernel_2.cpp.o CMakeFiles/dlib.dir/md5/md5_kernel_1.cpp.o CMakeFiles/dlib.dir/tokenizer/tokenizer_kernel_1.cpp.o CMakeFiles/dlib.dir/unicode/unicode.cpp.o CMakeFiles/dlib.dir/data_io/image_dataset_metadata.cpp.o CMakeFiles/dlib.dir/data_io/mnist.cpp.o CMakeFiles/dlib.dir/global_optimization/global_function_search.cpp.o CMakeFiles/dlib.dir/filtering/kalman_filter.cpp.o CMakeFiles/dlib.dir/test_for_odr_violations.cpp.o CMakeFiles/dlib.dir/svm/auto.cpp.o CMakeFiles/dlib.dir/sockets/sockets_kernel_1.cpp.o CMakeFiles/dlib.dir/bsp/bsp.cpp.o CMakeFiles/dlib.dir/dir_nav/dir_nav_kernel_1.cpp.o CMakeFiles/dlib.dir/dir_nav/dir_nav_kernel_2.cpp.o CMakeFiles/dlib.dir/dir_nav/dir_nav_extensions.cpp.o CMakeFiles/dlib.dir/linker/linker_kernel_1.cpp.o CMakeFiles/dlib.dir/logger/extra_logger_headers.cpp.o CMakeFiles/dlib.dir/logger/logger_kernel_1.cpp.o CMakeFiles/dlib.dir/logger/logger_config_file.cpp.o CMakeFiles/dlib.dir/misc_api/misc_api_kernel_1.cpp.o CMakeFiles/dlib.dir/misc_api/misc_api_kernel_2.cpp.o CMakeFiles/dlib.dir/sockets/sockets_extensions.cpp.o CMakeFiles/dlib.dir/sockets/sockets_kernel_2.cpp.o CMakeFiles/dlib.dir/sockstreambuf/sockstreambuf.cpp.o CMakeFiles/dlib.dir/sockstreambuf/sockstreambuf_unbuffered.cpp.o CMakeFiles/dlib.dir/server/server_kernel.cpp.o CMakeFiles/dlib.dir/server/server_iostream.cpp.o CMakeFiles/dlib.dir/server/server_http.cpp.o CMakeFiles/dlib.dir/threads/multithreaded_object_extension.cpp.o CMakeFiles/dlib.dir/threads/threaded_object_extension.cpp.o CMakeFiles/dlib.dir/threads/threads_kernel_1.cpp.o CMakeFiles/dlib.dir/threads/threads_kernel_2.cpp.o CMakeFiles/dlib.dir/threads/threads_kernel_shared.cpp.o CMakeFiles/dlib.dir/threads/thread_pool_extension.cpp.o CMakeFiles/dlib.dir/threads/async.cpp.o CMakeFiles/dlib.dir/timer/timer.cpp.o CMakeFiles/dlib.dir/stack_trace.cpp.o CMakeFiles/dlib.dir/cuda/cpu_dlib.cpp.o CMakeFiles/dlib.dir/cuda/tensor_tools.cpp.o CMakeFiles/dlib.dir/gui_widgets/fonts.cpp.o CMakeFiles/dlib.dir/gui_widgets/widgets.cpp.o CMakeFiles/dlib.dir/gui_widgets/drawable.cpp.o CMakeFiles/dlib.dir/gui_widgets/canvas_drawing.cpp.o CMakeFiles/dlib.dir/gui_widgets/style.cpp.o CMakeFiles/dlib.dir/gui_widgets/base_widgets.cpp.o CMakeFiles/dlib.dir/gui_core/gui_core_kernel_1.cpp.o CMakeFiles/dlib.dir/gui_core/gui_core_kernel_2.cpp.o CMakeFiles/dlib.dir/image_loader/png_loader.cpp.o CMakeFiles/dlib.dir/image_saver/save_png.cpp.o CMakeFiles/dlib.dir/image_loader/jpeg_loader.cpp.o CMakeFiles/dlib.dir/image_saver/save_jpeg.cpp.o
+/usr/bin/ranlib libdlib.a
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+[ 85%] Built target dlib
+/usr/bin/make -f CMakeFiles/wrap_swig_compilation.dir/build.make CMakeFiles/wrap_swig_compilation.dir/depend
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/wrap_swig_compilation.dir/DependInfo.cmake --color=
+Dependee "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/wrap_swig_compilation.dir/DependInfo.cmake" is newer than depender "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/wrap_swig_compilation.dir/depend.internal".
+Dependee "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/CMakeDirectoryInformation.cmake" is newer than depender "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/wrap_swig_compilation.dir/depend.internal".
+Scanning dependencies of target wrap_swig_compilation
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+/usr/bin/make -f CMakeFiles/wrap_swig_compilation.dir/build.make CMakeFiles/wrap_swig_compilation.dir/build
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+[ 86%] Swig compile swig/dlib.i for java
+/usr/bin/cmake -E make_directory generated-sources/com/github/radium266/dlib/swig .
+/usr/bin/cmake -E touch /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/wrap.dir/dlibJAVA.stamp
+/usr/bin/cmake -E env SWIG_LIB=/usr/share/swig/4.0.1 /usr/bin/swig -java -package com.github.radium266.dlib.swig -I- -outdir generated-sources/com/github/radium266/dlib/swig -c++ -I/usr/include/opencv4 -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/include -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig -o ./dlibJAVA_wrap.cxx /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig/dlib.i
+[ 88%] Swig compile swig/showcase.i for java
+/usr/bin/cmake -E make_directory generated-sources/com/github/radium266/dlib/swig .
+/usr/bin/cmake -E touch /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/wrap.dir/showcaseJAVA.stamp
+/usr/bin/cmake -E env SWIG_LIB=/usr/share/swig/4.0.1 /usr/bin/swig -java -package com.github.radium266.dlib.swig -I- -outdir generated-sources/com/github/radium266/dlib/swig -c++ -I/usr/include/opencv4 -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/include -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig -o ./showcaseJAVA_wrap.cxx /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig/showcase.i
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+[ 88%] Built target wrap_swig_compilation
+/usr/bin/make -f CMakeFiles/wrap.dir/build.make CMakeFiles/wrap.dir/depend
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/wrap.dir/DependInfo.cmake --color=
+Dependee "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/wrap.dir/DependInfo.cmake" is newer than depender "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/wrap.dir/depend.internal".
+Dependee "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/CMakeDirectoryInformation.cmake" is newer than depender "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/wrap.dir/depend.internal".
+Scanning dependencies of target wrap
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+/usr/bin/make -f CMakeFiles/wrap.dir/build.make CMakeFiles/wrap.dir/build
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+[ 89%] Building CXX object CMakeFiles/wrap.dir/dlibJAVA_wrap.cxx.o
+/usr/bin/c++   -I/usr/include/opencv4 -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/include -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig_include  -O3 -DNDEBUG -fPIC   -o CMakeFiles/wrap.dir/dlibJAVA_wrap.cxx.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/dlibJAVA_wrap.cxx
+[ 91%] Building CXX object CMakeFiles/wrap.dir/showcaseJAVA_wrap.cxx.o
+/usr/bin/c++   -I/usr/include/opencv4 -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/include -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig_include  -O3 -DNDEBUG -fPIC   -o CMakeFiles/wrap.dir/showcaseJAVA_wrap.cxx.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/showcaseJAVA_wrap.cxx
+[ 92%] Linking CXX static library libwrap.a
+/usr/bin/cmake -P CMakeFiles/wrap.dir/cmake_clean_target.cmake
+/usr/bin/cmake -E cmake_link_script CMakeFiles/wrap.dir/link.txt --verbose=1
+/usr/bin/ar qc libwrap.a  CMakeFiles/wrap.dir/dlibJAVA_wrap.cxx.o CMakeFiles/wrap.dir/showcaseJAVA_wrap.cxx.o
+/usr/bin/ranlib libwrap.a
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+[ 92%] Built target wrap
+/usr/bin/make -f CMakeFiles/dlib-java.dir/build.make CMakeFiles/dlib-java.dir/depend
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/dlib-java.dir/DependInfo.cmake --color=
+Dependee "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/dlib-java.dir/DependInfo.cmake" is newer than depender "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/dlib-java.dir/depend.internal".
+Dependee "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/CMakeDirectoryInformation.cmake" is newer than depender "/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/dlib-java.dir/depend.internal".
+Scanning dependencies of target dlib-java
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+/usr/bin/make -f CMakeFiles/dlib-java.dir/build.make CMakeFiles/dlib-java.dir/build
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+[ 94%] Building CXX object CMakeFiles/dlib-java.dir/face_descriptor_computer.cpp.o
+/usr/bin/c++  -Ddlib_java_EXPORTS -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/include -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig_include -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/.. -isystem /usr/include/opencv4  -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib-java.dir/face_descriptor_computer.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/face_descriptor_computer.cpp
+[ 95%] Building CXX object CMakeFiles/dlib-java.dir/face_detector.cpp.o
+/usr/bin/c++  -Ddlib_java_EXPORTS -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/include -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig_include -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/.. -isystem /usr/include/opencv4  -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib-java.dir/face_detector.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/face_detector.cpp
+[ 97%] Building CXX object CMakeFiles/dlib-java.dir/shape_predictor.cpp.o
+/usr/bin/c++  -Ddlib_java_EXPORTS -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/include -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig_include -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/.. -isystem /usr/include/opencv4  -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib-java.dir/shape_predictor.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/shape_predictor.cpp
+[ 98%] Building CXX object CMakeFiles/dlib-java.dir/showcase.cpp.o
+/usr/bin/c++  -Ddlib_java_EXPORTS -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/include -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/swig_include -I/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib/.. -isystem /usr/include/opencv4  -O3 -DNDEBUG -fPIC   -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK -DDLIB_PNG_SUPPORT -DDLIB_GIF_SUPPORT -mavx -Wreturn-type -o CMakeFiles/dlib-java.dir/showcase.cpp.o -c /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native/showcase.cpp
+[100%] Linking CXX shared library generated-resources/libdlib-java.so
+/usr/bin/cmake -E cmake_link_script CMakeFiles/dlib-java.dir/link.txt --verbose=1
+/usr/bin/c++ -fPIC -O3 -DNDEBUG  -shared -Wl,-soname,libdlib-java.so -o generated-resources/libdlib-java.so CMakeFiles/dlib-java.dir/face_descriptor_computer.cpp.o CMakeFiles/dlib-java.dir/face_detector.cpp.o CMakeFiles/dlib-java.dir/shape_predictor.cpp.o CMakeFiles/dlib-java.dir/showcase.cpp.o  -Wl,-rpath,/usr/lib/jvm/default/jre/lib/amd64:/usr/lib/jvm/default/jre/lib/amd64/server -Wl,--whole-archive libwrap.a -Wl,--no-whole-archive /usr/lib/libopencv_gapi.so.4.2.0 /usr/lib/libopencv_stitching.so.4.2.0 /usr/lib/libopencv_aruco.so.4.2.0 /usr/lib/libopencv_bgsegm.so.4.2.0 /usr/lib/libopencv_bioinspired.so.4.2.0 /usr/lib/libopencv_ccalib.so.4.2.0 /usr/lib/libopencv_cvv.so.4.2.0 /usr/lib/libopencv_dnn_objdetect.so.4.2.0 /usr/lib/libopencv_dnn_superres.so.4.2.0 /usr/lib/libopencv_dpm.so.4.2.0 /usr/lib/libopencv_face.so.4.2.0 /usr/lib/libopencv_freetype.so.4.2.0 /usr/lib/libopencv_fuzzy.so.4.2.0 /usr/lib/libopencv_hdf.so.4.2.0 /usr/lib/libopencv_hfs.so.4.2.0 /usr/lib/libopencv_img_hash.so.4.2.0 /usr/lib/libopencv_line_descriptor.so.4.2.0 /usr/lib/libopencv_quality.so.4.2.0 /usr/lib/libopencv_reg.so.4.2.0 /usr/lib/libopencv_rgbd.so.4.2.0 /usr/lib/libopencv_saliency.so.4.2.0 /usr/lib/libopencv_stereo.so.4.2.0 /usr/lib/libopencv_structured_light.so.4.2.0 /usr/lib/libopencv_superres.so.4.2.0 /usr/lib/libopencv_surface_matching.so.4.2.0 /usr/lib/libopencv_tracking.so.4.2.0 /usr/lib/libopencv_videostab.so.4.2.0 /usr/lib/libopencv_viz.so.4.2.0 /usr/lib/libopencv_xfeatures2d.so.4.2.0 /usr/lib/libopencv_xobjdetect.so.4.2.0 /usr/lib/libopencv_xphoto.so.4.2.0 /usr/lib/jvm/default/jre/lib/amd64/libjawt.so /usr/lib/jvm/default/jre/lib/amd64/server/libjvm.so _deps/dlib-build/dlib/libdlib.a /usr/lib/libopencv_shape.so.4.2.0 /usr/lib/libopencv_highgui.so.4.2.0 /usr/lib/libopencv_datasets.so.4.2.0 /usr/lib/libopencv_plot.so.4.2.0 /usr/lib/libopencv_text.so.4.2.0 /usr/lib/libopencv_dnn.so.4.2.0 /usr/lib/libopencv_ml.so.4.2.0 /usr/lib/libopencv_phase_unwrapping.so.4.2.0 /usr/lib/libopencv_optflow.so.4.2.0 /usr/lib/libopencv_ximgproc.so.4.2.0 /usr/lib/libopencv_video.so.4.2.0 /usr/lib/libopencv_videoio.so.4.2.0 /usr/lib/libopencv_imgcodecs.so.4.2.0 /usr/lib/libopencv_objdetect.so.4.2.0 /usr/lib/libopencv_calib3d.so.4.2.0 /usr/lib/libopencv_features2d.so.4.2.0 /usr/lib/libopencv_flann.so.4.2.0 /usr/lib/libopencv_photo.so.4.2.0 /usr/lib/libopencv_imgproc.so.4.2.0 /usr/lib/libopencv_core.so.4.2.0 -lpthread -lnsl -lSM -lICE -lX11 -lXext -lgif -lpng -lz -ljpeg -lcblas -llapack -lsqlite3 
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+[100%] Built target dlib-java
+make[1]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+/usr/bin/cmake -E cmake_progress_start /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles 0
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.0.0:add-resource (generate-resources) @ dlib ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ dlib ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ dlib ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 14 source files to /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/classes
+[INFO] 
+[INFO] --- exec-maven-plugin:1.6.0:exec (cmake) @ dlib ---
+-- Using CMake version: 3.16.2
+-- Compiling dlib version: 19.19.99
+-- Enabling AVX instructions
+-- Found system copy of libpng: /usr/lib/libpng.so;/usr/lib/libz.so
+-- Found system copy of libjpeg: /usr/lib/libjpeg.so
+-- Searching for BLAS and LAPACK
+-- Searching for BLAS and LAPACK
+-- Found BLAS and LAPACK via pkg-config
+-- C++11 activated.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.0.0:add-source (generate-sources) @ dlib ---
+[INFO] Source directory: /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/generated-sources added.
+[INFO] 
+[INFO] --- exec-maven-plugin:1.6.0:exec (make) @ dlib ---
+/usr/bin/cmake -S/home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native -B/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/progress.marks
+/usr/bin/make -f CMakeFiles/Makefile2 all
+make[1]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+/usr/bin/make -f _deps/dlib-build/dlib/CMakeFiles/dlib.dir/build.make _deps/dlib-build/dlib/CMakeFiles/dlib.dir/depend
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-src/dlib /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/_deps/dlib-build/dlib/CMakeFiles/dlib.dir/DependInfo.cmake --color=
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+/usr/bin/make -f _deps/dlib-build/dlib/CMakeFiles/dlib.dir/build.make _deps/dlib-build/dlib/CMakeFiles/dlib.dir/build
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+make[2]: Nothing to be done for '_deps/dlib-build/dlib/CMakeFiles/dlib.dir/build'.
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+[ 85%] Built target dlib
+/usr/bin/make -f CMakeFiles/wrap_swig_compilation.dir/build.make CMakeFiles/wrap_swig_compilation.dir/depend
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/wrap_swig_compilation.dir/DependInfo.cmake --color=
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+/usr/bin/make -f CMakeFiles/wrap_swig_compilation.dir/build.make CMakeFiles/wrap_swig_compilation.dir/build
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+make[2]: Nothing to be done for 'CMakeFiles/wrap_swig_compilation.dir/build'.
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+[ 88%] Built target wrap_swig_compilation
+/usr/bin/make -f CMakeFiles/wrap.dir/build.make CMakeFiles/wrap.dir/depend
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/wrap.dir/DependInfo.cmake --color=
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+/usr/bin/make -f CMakeFiles/wrap.dir/build.make CMakeFiles/wrap.dir/build
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+make[2]: Nothing to be done for 'CMakeFiles/wrap.dir/build'.
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+[ 92%] Built target wrap
+/usr/bin/make -f CMakeFiles/dlib-java.dir/build.make CMakeFiles/dlib-java.dir/depend
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+cd /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/src/main/native /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles/dlib-java.dir/DependInfo.cmake --color=
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+/usr/bin/make -f CMakeFiles/dlib-java.dir/build.make CMakeFiles/dlib-java.dir/build
+make[2]: Entering directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+make[2]: Nothing to be done for 'CMakeFiles/dlib-java.dir/build'.
+make[2]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+[100%] Built target dlib-java
+make[1]: Leaving directory '/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake'
+/usr/bin/cmake -E cmake_progress_start /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/CMakeFiles 0
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.0.0:add-resource (generate-resources) @ dlib ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ dlib ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ dlib ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ dlib ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 11 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ dlib ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ dlib ---
+[INFO] Surefire report directory: /home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.github.radium226.dlib.FaceDetectorTest
+Yay! 
+Yay! 
+Detecting...
+{277, 701, 73x73}
+{477, 717, 73x73}
+{125, 685, 73x73}
+{629, 677, 73x73}
+{805, 693, 73x73}
+---
+{277, 701, 73x73}
+{477, 717, 73x73}
+{125, 685, 73x73}
+{629, 677, 73x73}
+{805, 693, 73x73}
+Detected! 
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.117 sec
+Running com.github.radium226.dlib.ShapePredictorTest
+Yay! 
+Yay! 
+{-6.0, 23.0}
+{-7.0, 34.0}
+{-7.0, 44.0}
+{-5.0, 55.0}
+{-1.0, 63.0}
+{5.0, 70.0}
+{13.0, 73.0}
+{22.0, 74.0}
+{30.0, 74.0}
+{37.0, 72.0}
+{42.0, 68.0}
+{45.0, 63.0}
+{49.0, 57.0}
+{52.0, 50.0}
+{56.0, 43.0}
+{58.0, 36.0}
+{58.0, 29.0}
+{9.0, 18.0}
+{15.0, 16.0}
+{22.0, 16.0}
+{28.0, 17.0}
+{34.0, 20.0}
+{47.0, 21.0}
+{50.0, 19.0}
+{53.0, 18.0}
+{57.0, 16.0}
+{59.0, 17.0}
+{40.0, 28.0}
+{41.0, 34.0}
+{42.0, 41.0}
+{42.0, 48.0}
+{33.0, 51.0}
+{36.0, 51.0}
+{40.0, 52.0}
+{43.0, 52.0}
+{45.0, 50.0}
+{15.0, 26.0}
+{20.0, 23.0}
+{25.0, 24.0}
+{29.0, 28.0}
+{24.0, 29.0}
+{19.0, 29.0}
+{44.0, 27.0}
+{47.0, 24.0}
+{52.0, 23.0}
+{54.0, 25.0}
+{52.0, 28.0}
+{48.0, 28.0}
+{21.0, 61.0}
+{28.0, 60.0}
+{35.0, 59.0}
+{38.0, 60.0}
+{40.0, 59.0}
+{42.0, 59.0}
+{43.0, 60.0}
+{41.0, 63.0}
+{39.0, 65.0}
+{36.0, 66.0}
+{32.0, 66.0}
+{27.0, 65.0}
+{24.0, 61.0}
+{34.0, 62.0}
+{37.0, 62.0}
+{39.0, 61.0}
+{42.0, 61.0}
+{39.0, 61.0}
+{37.0, 61.0}
+{33.0, 61.0}
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.801 sec
+Running com.github.radium226.dlib.ResourcesTest
+/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/test-classes/known-faces
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
+Running com.github.radium226.dlib.FaceDescriptorComputerTest
+Yay! 
+Yay! 
+Yay! 
+Loading models... 
+Done! 
+Learning known faces... 
+knownFaces={laspales.jpg=Mat [ 128*1*CV_32FC1, isCont=true, isSubmat=false, nativeObj=0x7fa1fbce9f30, dataAddr=0x7fa1fbce5b00 ], brigitte.jpeg=Mat [ 128*1*CV_32FC1, isCont=true, isSubmat=false, nativeObj=0x7fa1fbcea800, dataAddr=0x7fa1fbcea580 ], emmanuel.jpg=Mat [ 128*1*CV_32FC1, isCont=true, isSubmat=false, nativeObj=0x7fa1fbd26880, dataAddr=0x7fa27443c300 ], jean-louis.jpg=Mat [ 128*1*CV_32FC1, isCont=true, isSubmat=false, nativeObj=0x7fa1fbceff70, dataAddr=0x7fa2751c0c40 ]}
+Done! 
+Recognizing unknown faces... 
+128x1x1
+[-0.10741644352674484]
+{laspales.jpg=0.7022236133751418, brigitte.jpeg=0.9750193011705477, emmanuel.jpg=0.9482321384792012, jean-louis.jpg=0.4398822225542528}
+jean-louis.1.jpg is jean-louis.jpg (0.4398822225542528)
+128x1x1
+[-0.10700973868370056]
+{laspales.jpg=0.9612375834667928, brigitte.jpeg=0.9757164365181498, emmanuel.jpg=0.44191900167707654, jean-louis.jpg=0.9742184080162049}
+emmanuel.1.jpg is emmanuel.jpg (0.44191900167707654)
+128x1x1
+[-0.06284826993942261]
+{laspales.jpg=0.9244385251285113, brigitte.jpeg=1.0273736859977378, emmanuel.jpg=0.32242837840057514, jean-louis.jpg=0.9351069914871549}
+emmanuel.2.jpg is emmanuel.jpg (0.32242837840057514)
+128x1x1
+[-0.06106377765536308]
+{laspales.jpg=0.9581060768431987, brigitte.jpeg=0.4351475572002103, emmanuel.jpg=1.012487349902992, jean-louis.jpg=0.987252120677686}
+brigitte.1.jpg is brigitte.jpeg (0.4351475572002103)
+128x1x1
+[-0.06796591728925705]
+{laspales.jpg=0.3813811351718741, brigitte.jpeg=0.953480826101106, emmanuel.jpg=0.8887930408291581, jean-louis.jpg=0.7791558102820948}
+laspales.1.jpg is laspales.jpg (0.3813811351718741)
+128x1x1
+[-0.020256340503692627]
+{laspales.jpg=0.7299138456421267, brigitte.jpeg=0.9173429257894389, emmanuel.jpg=0.7970264945309373, jean-louis.jpg=0.7401538300002467}
+patrick.1.jpg is laspales.jpg (0.7299138456421267)
+Done! 
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.757 sec
+
+Results :
+
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for DLib Parent 1.0-SNAPSHOT:
+[INFO] 
+[INFO] DLib Parent ........................................ SUCCESS [  0.182 s]
+[INFO] Resources .......................................... SUCCESS [  1.159 s]
+[INFO] DLib ............................................... SUCCESS [04:26 min]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  04:27 min
+[INFO] Finished at: 2020-01-04T12:56:41+01:00
+[INFO] ------------------------------------------------------------------------

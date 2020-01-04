@@ -37,13 +37,13 @@
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <workingDirectory>${project.build.directory}</workingDirectory>
                             <executable>cmake</executable>
                             <arguments>
                                 <argument>-S</argument>
                                 <argument>${project.basedir}/src/main/native</argument>
                                 <argument>-B</argument>
-                                <argument>cmake</argument>
+                                <argument>${project.build.directory}/cmake</argument>
+                                <argument>-DUSE_AVX_INSTRUCTIONS:BOOL=ON</argument>
                             </arguments>
                         </configuration>
                     </execution>
@@ -60,6 +60,7 @@
                                 <argument>${project.build.directory}/cmake</argument>
                                 <argument>--config</argument>
                                 <argument>Release</argument>
+                                <argument>-v</argument>
                             </arguments>
                         </configuration>
                     </execution>
