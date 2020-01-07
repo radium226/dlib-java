@@ -74,7 +74,6 @@ public class Libraries {
             }
 
             if (lastUnsatisfiedLinkError == null) {
-                System.out.println("Yay! ");
                 break;
             }
         }
