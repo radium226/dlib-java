@@ -20,53 +20,45 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+        <java.version>12</java.version>
+        <download.cmake>false</download.cmake>
     </properties>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
-                <executions>
-                    <execution>
-                        <id>cmake</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>cmake</executable>
-                            <arguments>
-                                <argument>-S</argument>
-                                <argument>${project.basedir}/src/main/native</argument>
-                                <argument>-B</argument>
-                                <argument>${project.build.directory}/cmake</argument>
-                                <argument>-DUSE_AVX_INSTRUCTIONS:BOOL=ON</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>make</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>cmake</executable>
-                            <arguments>
-                                <argument>--build</argument>
-                                <argument>${project.build.directory}/cmake</argument>
-                                <argument>--config</argument>
-                                <argument>Release</argument>
-                                <argument>-v</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
+          <plugin>
+            <groupId>com.googlecode.cmake-maven-project</groupId>
+            <artifactId>cmake-maven-plugin</artifactId>
+            <version>3.14.5-b1</version>
+            <executions>
+              <execution>
+                <id>cmake-generate</id>
+                <goals>
+                  <goal>generate</goal>
+                </goals>
+                <configuration>
+                  <sourcePath>${project.basedir}/src/main/native</sourcePath>
+                  <targetPath>${project.build.directory}/cmake</targetPath>
+                  <classifier>linux-x86_64</classifier>
+                  <options>
+                    <option>-DUSE_AVX_INSTRUCTIONS:bool=on</option>
+                  </options>
+                </configuration>
+              </execution>
+              <execution>
+                <id>cmake-compile</id>
+                <goals>
+                  <goal>compile</goal>
+                </goals>
+                <phase>generate-resources</phase>
+                <configuration>
+                  <config>Release</config>
+                  <projectDirectory>${project.build.directory}/cmake</projectDirectory>
+                  <classifier>linux-x86_64</classifier>
+                  </configuration>
+              </execution>
+            </executions>
+          </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
