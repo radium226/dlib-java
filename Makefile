@@ -1,5 +1,17 @@
 TARGET:=target
-JDK:=jdk8-openjdk
+JDK:=jdk11-graalvm-bin
+
+.PHONY: opencv
+opencv: docker-image-make
+	docker \
+		run \
+			--user "$(shell id -u):$(shell id -g)" \
+			--mount type="bind",source="$(shell pwd)",target="/mnt/dlib-java" \
+			--workdir="/mnt/dlib-java" \
+			--rm \
+			"dlib-java-make" \
+			"--makefile=make/make.mk" \
+			"opencv"
 
 .PHONY: clean
 clean: docker-image-make
@@ -43,23 +55,3 @@ install: package
 	mvn \
 		install \
 		-DskipTests
-
-.PHONY: dlib
-dlib: docker-image-make
-	mkdir -p "$(TARGET)"
-	docker \
-		run \
-			--user "$(shell id -u):$(shell id -g)" \
-			--mount type="bind",source="$(shell pwd)",target="/mnt/dlib-java" \
-			--workdir="/mnt/dlib-java" \
-			--rm \
-			"dlib-java-make" \
-			"--makefile=make/make.mk" \
-			"$(TARGET)/dlib-git-VERSION-x86_64.pkg.tar.xz"
-
-.PHONY: dlib-local
-dlib-local:
-	mkdir -p "$(TARGET)"
-	make \
-		--makefile=make/make.mk \
-		"$(TARGET)/dlib-git-VERSION-x86_64.pkg.tar.xz"

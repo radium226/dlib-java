@@ -3,6 +3,7 @@ OPENCV_ARCH_PGKVER:=$(OPENCV_VERSION)
 OPENCV_ARCH_PKGREL:=1
 
 $(TARGET)/opencv/trunk/PKGBUILD:
+	mkdir -p "$(TARGET)"
 	cd "$(TARGET)"
 	asp checkout "opencv"
 
@@ -34,3 +35,5 @@ $(TARGET)/.m2/repository/opencv/opencv/$(OPENCV_VERSION)/opencv-$(OPENCV_VERSION
 		-Dversion="$(OPENCV_VERSION)" \
 		-Dpackaging="jar"
 
+.PHONY: opencv
+opencv: $(TARGET)/opencv/trunk/opencv-$(OPENCV_ARCH_PGKVER)-$(OPENCV_ARCH_PKGREL)-x86_64.pkg.tar.xz
