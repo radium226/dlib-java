@@ -20,6 +20,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 # JNI
 find_package(JNI REQUIRED)
 include_directories(${JNI_INCLUDE_DIRS})
+string(REPLACE "jawt" "awt_headless" JNI_HEADLESS_LIBRARIES "${JNI_LIBRARIES}")
 
 # Swig
 find_package(SWIG REQUIRED)
@@ -61,6 +62,6 @@ target_link_libraries(dlib-java
     wrap
     "-Wl,--no-whole-archive"
     ${OpenCV_LIBRARIES}
-    ${JNI_LIBRARIES}
+    ${JNI_HEADLESS_LIBRARIES}
     dlib::dlib
 )

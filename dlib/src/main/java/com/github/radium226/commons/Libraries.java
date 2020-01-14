@@ -18,7 +18,9 @@ public class Libraries {
 
     }
 
-    public static LibraryLoader SYSTEM = libraryName -> System.loadLibrary(libraryName);
+    public static LibraryLoader SYSTEM_AUTO = libraryName -> System.loadLibrary(libraryName);
+
+    public static LibraryLoader SYSTEM_MANUAL = libraryName -> System.load("/usr/lib/" + libraryFileName(libraryName));
 
     public static LibraryLoader RESOURCES = libraryName -> {
         try {
@@ -59,7 +61,7 @@ public class Libraries {
     }
 
     public static List<LibraryLoader> libraryLoadersFor(String libraryName) {
-        return Arrays.asList(RESOURCES, SYSTEM, generatedResources(Optional.empty()), generatedResources(Optional.of("dlib")));
+        return Arrays.asList(RESOURCES, SYSTEM_AUTO, SYSTEM_MANUAL, generatedResources(Optional.empty()), generatedResources(Optional.of("dlib")));
     }
 
     public static void loadLibrary(String libraryName) {
@@ -71,6 +73,7 @@ public class Libraries {
                 lastUnsatisfiedLinkError = null;
             } catch (UnsatisfiedLinkError unsatisfiedLinkError) {
                 lastUnsatisfiedLinkError = unsatisfiedLinkError;
+                //unsatisfiedLinkError.printStackTrace(System.err);
             }
 
             if (lastUnsatisfiedLinkError == null) {

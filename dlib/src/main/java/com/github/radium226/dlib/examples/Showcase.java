@@ -1,6 +1,6 @@
 package com.github.radium226.dlib.examples;
 
-import org.opencv.core.*;
+/*import org.opencv.core.*;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -12,12 +12,12 @@ import java.nio.file.Paths;
 import org.opencv.highgui.HighGui;
 import org.opencv.imgproc.Imgproc;
 
-import com.github.radium226.dlib.DLib;
+import com.github.radium226.dlib.DLib;*/
 
 public class Showcase {
 
     public static void main(String[] arguments) throws Throwable {
-        DLib.loadLibraries();
+        /*DLib.loadLibraries();
         System.out.println(arguments[0]);
         Mat mat = openMatUsingImageIO(Paths.get(arguments[0]));
 
@@ -55,7 +55,7 @@ public class Showcase {
         Mat mat = new Mat(height, width, CvType.CV_8UC3);
         mat.put(0, 0, ((DataBufferByte) convertedImage.getData().getDataBuffer()).getData());
 
-        return mat;
+        return mat;*/
     }
 
 }

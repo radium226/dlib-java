@@ -22,10 +22,8 @@ public class FaceDetectorTest {
 
     @BeforeClass
     public static void setUp() throws IOException {
-        //DLib.loadLibraries();
-        //OpenCV.loadLibraries();
-
-        System.load("/home/adrien.besnard/Personal/Projects/dlib-java/dlib/target/cmake/generated-resources/libdlib-java.so");
+        DLib.loadLibraries();
+        OpenCV.loadLibraries();
 
         FACE_DETECTOR = new FaceDetector();
     }

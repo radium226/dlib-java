@@ -40,7 +40,7 @@ public class ShapePredictorTest {
 
     }
 
-    @Test
+    /*@Test
     public void testPredictShapeWithLena() throws IOException {
         Mat lenaMat = Showcase.openMatUsingImageIO(Resource.byName("lena.jpg").getPath());
         List<Rect> faceBounds = detectFaces(lenaMat);
@@ -61,6 +61,6 @@ public class ShapePredictorTest {
         drawMakers(lenaFaceMat, landmarks);
         //Showcase.displayImageUsingOpenCVInJava(lenaFaceMat);
 
-    }
+    }*/
 
 }

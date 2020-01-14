@@ -41,7 +41,8 @@
                   <targetPath>${project.build.directory}/cmake</targetPath>
                   <classifier>linux-x86_64</classifier>
                   <options>
-                    <option>-DUSE_AVX_INSTRUCTIONS:bool=on</option>
+                    <option>-DUSE_AVX_INSTRUCTIONS:BOOL=ON</option>
+                    <option>-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON</option>
                   </options>
                 </configuration>
               </execution>

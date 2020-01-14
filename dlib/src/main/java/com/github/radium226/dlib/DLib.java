@@ -8,7 +8,6 @@ import java.util.Arrays;
 public class DLib {
 
     public static void loadLibraries() {
-        OpenCV.loadLibraries();
         for (String libraryName : Arrays.asList("dlib-java")) {
             Libraries.loadLibrary(libraryName);
         }
