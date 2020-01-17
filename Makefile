@@ -1,6 +1,13 @@
 TARGET:=target
 JDK:=jdk11-graalvm-bin
 
+.PHONY: swig
+swig:
+	mkdir -p "target/cmake" && \
+	cd "target/cmake" && \
+	cmake "../../dlib/src/main/native" -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON && \
+	cmake --build "." --clean-first --target "wrap_swig_compilation"
+
 .PHONY: opencv
 opencv: docker-image-make
 	docker \

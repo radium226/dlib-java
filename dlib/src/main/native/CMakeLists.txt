@@ -42,6 +42,11 @@ swig_add_library(wrap
     SOURCES "swig/dlib.i" "swig/showcase.i"
     OUTFILE_DIR "."
 )
+add_custom_command(
+  TARGET wrap_swig_compilation
+  POST_BUILD
+  COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/patch-swig.sh "${CMAKE_SWIG_OUTDIR}"
+)
 
 # Compile
 include_directories("include")
