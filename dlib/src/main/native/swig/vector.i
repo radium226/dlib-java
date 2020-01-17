@@ -64,6 +64,7 @@ AUTOBOX(SWIGTYPE, $typemap(jstype,$1_basetype))
 %typemap(jstype) std::vector &VECTOR_VALUE_IN "$typemap(autobox,$1_basetype)"
 %typemap(javacode) std::vector %{
   $javaclassname(java.util.Collection<$typemap(autobox,$1_basetype::value_type)> e) {
+    this();
     this.reserve(e.size());
     for($typemap(autobox,$1_basetype::value_type) value: e) {
       this.push_back(value);
